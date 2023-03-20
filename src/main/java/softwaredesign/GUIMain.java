@@ -3,11 +3,17 @@ package softwaredesign;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
 //TODO:
-//- Do all the todos
+//- Implement GUI interface (from class diagram)
+//- Restructure the code to be more organized
+//- Finish animations
+//- Structure the code to enable multiple models
+//- Wire it up the class
 //- More immutable
 //- Scale with size increase
 
@@ -16,7 +22,8 @@ public class GUIMain {
     public static int SCREENWIDTH = 500;
     public static int SCREENHEIGHT = 500;
 
-    public static void main(String[] args) {
+
+    public static void runGUI(){
 
         // Create a window
         JFrame frame = new JFrame("Tamagotchi");
@@ -38,10 +45,10 @@ public class GUIMain {
 
         // Create a label with an image
         ImageIcon characterIcon = new ImageIcon("src/main/java/softwaredesign/images/cristianobasic.png");
-        JLabel label = new JLabel(characterIcon);
-        label.setBounds(135, 175, 250, 250);
-        label.setHorizontalAlignment(JLabel.CENTER);
-        frame.add(label);
+        JLabel characterLabel = new JLabel(characterIcon);
+        characterLabel.setBounds(135, 175, 250, 250);
+        characterLabel.setHorizontalAlignment(JLabel.CENTER);
+        frame.add(characterLabel);
 
         // Create the hunger level bar
         JProgressBar hungerBar = new JProgressBar(0, 100);
@@ -54,6 +61,13 @@ public class GUIMain {
         hungerBar.setBackground(new Color(255, 182, 193));
         hungerBar.setBorder(BorderFactory.createLineBorder(Color.BLACK)); // add a white border to the progress bar
         frame.add(hungerBar);
+
+        // TODO: Allow for making a warning function
+        ImageIcon warningImage = new ImageIcon("src/main/java/softwaredesign/images/warning.png");
+        JLabel warningLabel = new JLabel(warningImage);
+        warningLabel.setBounds(155, 10, 125, 25);
+        warningLabel.setHorizontalAlignment(JLabel.CENTER);
+        frame.add(warningLabel);
 
         // Create the hygiene level bar
         JProgressBar hygieneBar = new JProgressBar(0, 100);
@@ -91,30 +105,17 @@ public class GUIMain {
         thirstBar.setBorder(BorderFactory.createLineBorder(Color.BLACK)); // add a white border to the progress bar
         frame.add(thirstBar);
 
-        // Create a label to show XP
+        // Create the mood bar
+        JProgressBar moodBar = new JProgressBar(0, 100);
         //TODO: Allow for changing value here
-        JLabel xpLabel = new JLabel("XP: 0");
-        xpLabel.setBounds(25, 170, 50, 20);
-        Font font = new Font("Arial", Font.BOLD, 12);
-        xpLabel.setFont(font);
-        xpLabel.setOpaque(true);
-        xpLabel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        xpLabel.setBackground(Color.WHITE);
-        xpLabel.setForeground(Color.BLACK);
-        xpLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        frame.add(xpLabel);
-
-        // Create a label to show Coin
-        //TODO: Allow for changing value here
-        JLabel coinLabel = new JLabel("Coin: 0");
-        coinLabel.setBounds(90, 170, 60, 20);
-        coinLabel.setFont(font);
-        coinLabel.setOpaque(true);
-        coinLabel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        coinLabel.setBackground(Color.WHITE);
-        coinLabel.setForeground(Color.BLACK);
-        coinLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        frame.add(coinLabel);
+        moodBar.setValue(25);
+        moodBar.setStringPainted(true);
+        moodBar.setString("Mood: " + moodBar.getValue() + "%");
+        moodBar.setBounds(10, 170, 150, 20);
+        moodBar.setForeground(new Color(86, 0, 66));
+        moodBar.setBackground(new Color(255, 234, 253, 255));
+        moodBar.setBorder(BorderFactory.createLineBorder(Color.BLACK)); // add a white border to the progress bar
+        frame.add(moodBar);
 
         // Create the Feeding Button
         JButton feedingButton = new JButton("Feed");
@@ -128,7 +129,57 @@ public class GUIMain {
         showerButton.setBounds(375, 50, 100, 30);
         showerButton.setPreferredSize(new Dimension(80, 30));
         frame.add(showerButton);
-        showerButton.addActionListener(e -> System.out.println("Shower Pressed."));
+
+        showerButton.addActionListener(e -> {
+            //TODO: Allow for changing value here
+
+            // Disable the button to prevent multiple clicks
+            showerButton.setEnabled(false);
+
+            ImageIcon feedingImage = new ImageIcon("src/main/java/softwaredesign/images/chicken.png");
+
+            // Create a label with the first feeding image
+            JLabel feedingLabel = new JLabel(feedingImage);
+
+            int initialYPosition = 30;
+
+            feedingLabel.setBounds(200, initialYPosition, feedingImage.getIconWidth(), feedingImage.getIconHeight());
+
+            frame.add(feedingLabel);
+
+            // Create a timer to change the feeding image and animate the falling
+            Timer timer = new Timer(50, null); // Decreased the delay for smoother animation
+            timer.addActionListener(new ActionListener() {
+                int index = 0;
+                int count = 0;
+                int maxCount = 8; // Set the maximum count based on frame height
+                int yPosition = initialYPosition;
+
+                public void actionPerformed(ActionEvent e) {
+                    count++;
+
+                    // Update the position of the feedingLabel
+                    yPosition += 18;
+                    feedingLabel.setLocation(200, yPosition);
+
+                    // Stop the timer automatically when the count reaches the maximum
+                    if (count >= maxCount) {
+                        timer.stop();
+                        // Remove the feedingLabel from the frame, revalidate, and repaint the frame
+                        frame.remove(feedingLabel);
+                        frame.revalidate();
+                        frame.repaint();
+
+                        // Enable the button again
+                        showerButton.setEnabled(true);
+                    }
+                }
+
+            });
+
+            // Start the timer
+            timer.start();
+        });
 
         // Create the Pee Button
         JButton peeButton = new JButton("Pee");
@@ -144,22 +195,22 @@ public class GUIMain {
         frame.add(drinkButton);
         drinkButton.addActionListener(e -> System.out.println("Drink pressed."));
 
-        // Create the Shop Button
-        JButton shopButton = new JButton("Shop");
-        shopButton.setBounds(375, 170, 100, 30);
-        shopButton.setPreferredSize(new Dimension(80, 30));
-        frame.add(shopButton);
-        shopButton.addActionListener(e -> System.out.println("Shop pressed."));
-
-        // Create the Feeding Button
+        // Create the Minigame Button
         JButton minigameButton = new JButton("Minigame");
-        minigameButton.setBounds(375, 210, 100, 30);
+        minigameButton.setBounds(375, 170, 100, 30);
         minigameButton.setPreferredSize(new Dimension(80, 30));
         frame.add(minigameButton);
         minigameButton.addActionListener(e -> System.out.println("Minigame pressed."));
 
         // Display the window
         frame.setVisible(true);
+    }
+
+
+    public static void main(String[] args) {
+
+        runGUI();
+
     }
 
 }

@@ -7,16 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
-
-//TODO:
-//- Implement GUI interface (from class diagram)
-//- Restructure the code to be more organized
-//- Finish animations
-//- Structure the code to enable multiple models
-//- Wire it up the class
-//- More immutable
-//- Scale with size increase
 
 public class GUIMain {
 
@@ -32,12 +22,11 @@ public class GUIMain {
 
         addLabelWithImage(frame, "src/main/java/softwaredesign/images/cristianobasic.png", 135, 175, 250, 250);
 
-        addProgressBar(frame, 90, "Hunger", 10, new Color(128, 0, 0), new Color(255, 182, 193));
-        //addLabelWithImage(frame, "src/main/java/softwaredesign/images/warning.png", 155, 10, 125, 25);
-        addProgressBar(frame, 85, "Hygiene", 50, new Color(0, 11, 255), new Color(204, 222, 255));
-        addProgressBar(frame, 70, "Bladder", 90, new Color(96, 77, 0), new Color(236, 224, 181));
-        addProgressBar(frame, 10, "Thirst", 130, new Color(6, 58, 0), new Color(225, 250, 225));
-        addProgressBar(frame, 25, "Mood", 170, new Color(86, 0, 66), new Color(255, 234, 253));
+        addProgressBar(frame, 90, "Hunger", 10, new Color(128, 0, 0), new Color(255, 182, 193), 90, true);
+        addProgressBar(frame, 85, "Hygiene", 50, new Color(0, 11, 255), new Color(204, 222, 255), 10, false);
+        addProgressBar(frame, 70, "Bladder", 90, new Color(96, 77, 0), new Color(236, 224, 181), 90, true);
+        addProgressBar(frame, 10, "Thirst", 130, new Color(6, 58, 0), new Color(225, 250, 225), 90, true);
+        addProgressBar(frame, 25, "Mood", 170, new Color(86, 0, 66), new Color(255, 234, 253), 10, false);
 
         addButton(frame, "Feed", 10, e -> buttonClickAction(frame, e));
         addButton(frame, "Shower", 50, e -> buttonClickAction(frame, e));
@@ -71,7 +60,7 @@ public class GUIMain {
         frame.add(label);
     }
 
-    private static void addProgressBar(JFrame frame, int value, String text, int y, Color fg, Color bg) {
+    private static void addProgressBar(JFrame frame, int value, String text, int y, Color fg, Color bg, int criticalValue, boolean isValIncreasing) {
         JProgressBar progressBar = new JProgressBar(0, 100);
         progressBar.setValue(value);
         progressBar.setStringPainted(true);
@@ -80,7 +69,23 @@ public class GUIMain {
         progressBar.setForeground(fg);
         progressBar.setBackground(bg);
         progressBar.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        progressBar.setName(text + "Bar");
         frame.add(progressBar);
+
+        ImageIcon warningIcon = new ImageIcon("src/main/java/softwaredesign/images/warning.png");
+        JLabel warningLabel = new JLabel(warningIcon);
+        warningLabel.setBounds(165, y, warningIcon.getIconWidth(), warningIcon.getIconHeight());
+        warningLabel.setVisible(false);
+        warningLabel.setName(text + "Warning");
+        frame.add(warningLabel);
+
+        if (isValIncreasing && value >= criticalValue) {
+            warningLabel.setVisible(true);
+        }
+
+        if (!isValIncreasing && value <= criticalValue) {
+            warningLabel.setVisible(true);
+        }
     }
 
     private static void addButton(JFrame frame, String text, int y, ActionListener action) {
@@ -140,6 +145,7 @@ public class GUIMain {
                 break;
         }
 
+
         // Iterate through the components and update the specified progress bar
         for (Component component : components) {
             if (component instanceof JProgressBar) {
@@ -152,6 +158,23 @@ public class GUIMain {
                     progressBar.setString(progressBarToUpdate + ": " + newValue + "%");
                     frame.revalidate();
                     frame.repaint();
+
+                    // Show or hide warning label based on the progress bar value
+                    String warningLabelName = progressBar.getName().replace("Bar", "Warning");
+                    for (Component comp : components) {
+                        if (comp instanceof JLabel && comp.getName() != null && comp.getName().equals(warningLabelName)) {
+                            JLabel warningLabel = (JLabel) comp;
+                            if (incrementVal < 0 && newValue >= 90) {
+                                warningLabel.setVisible(true);
+                            } else if (incrementVal > 0 && newValue <= 10) {
+                                warningLabel.setVisible(true);
+                            }
+                            else {
+                                warningLabel.setVisible(false);
+                            }
+                            break;
+                        }
+                    }
                 }
             }
         }

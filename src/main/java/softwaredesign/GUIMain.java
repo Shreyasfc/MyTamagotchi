@@ -1,16 +1,21 @@
 package softwaredesign;
 
-import javax.imageio.ImageIO;
+import edu.cmu.sphinx.api.Configuration;
+import edu.cmu.sphinx.api.LiveSpeechRecognizer;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Logger;
 
-public class GUIMain {
+public class GUIMain extends DefaultScene {
 
     public static void runGUI() {
+
         JFrame frame = createWindow();
 
         try {
@@ -33,22 +38,15 @@ public class GUIMain {
         addButton(frame, "Drink", 130, e -> buttonClickAction(frame, e));
         addButton(frame, "Minigame", 170, e -> buttonClickAction(frame, e));
 
+        JLabel voiceCommandLabel = new JLabel("Your voice command: ");
+        voiceCommandLabel.setName("voiceCommandLabel");
+        voiceCommandLabel.setBounds(10, 210, 200, 30);
+        voiceCommandLabel.setForeground(Color.BLACK); // Set the text color to black
+        voiceCommandLabel.setBackground(Color.WHITE); // Set the background color to white
+        voiceCommandLabel.setOpaque(true); // Make the background visible
+        frame.add(voiceCommandLabel);
+
         frame.setVisible(true);
-    }
-
-    private static JFrame createWindow() {
-        JFrame frame = new JFrame("Tamagotchi");
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setSize(500, 500);
-        frame.setLocationRelativeTo(null);
-        return frame;
-    }
-
-    private static void setContentPaneWithImage(JFrame frame) throws IOException {
-        Image backgroundImage = ImageIO.read(new File("src/main/java/softwaredesign/images/background.png"));
-        JLabel backgroundLabel = new JLabel(new ImageIcon(backgroundImage));
-        backgroundLabel.setBounds(0, 0, backgroundImage.getWidth(null), backgroundImage.getHeight(null));
-        frame.setContentPane(backgroundLabel);
     }
 
     private static void parseCharacter(JFrame frame) {
@@ -249,7 +247,86 @@ public class GUIMain {
     public static void main(String[] args) {
 
         runGUI();
+        setupVoiceRecognition();
 
+    }
+
+    private static void setupVoiceRecognition() {
+
+        //This mini-segment aims to block the annoying logger messages
+        Logger cmRootLogger = Logger.getLogger("default.config");
+        cmRootLogger.setLevel(java.util.logging.Level.OFF);
+        String conFile = System.getProperty("java.util.logging.config.file");
+        if (conFile == null) {
+            System.setProperty("java.util.logging.config.file", "ignoreAllSphinx4LoggingOutput");
+        }
+
+        Configuration configuration = new Configuration();
+
+        configuration.setAcousticModelPath("resource:/edu/cmu/sphinx/models/en-us/en-us");
+        configuration.setDictionaryPath("resource:/edu/cmu/sphinx/models/en-us/cmudict-en-us.dict");
+        configuration.setLanguageModelPath("resource:/edu/cmu/sphinx/models/en-us/en-us.lm.bin");
+
+        try {
+            LiveSpeechRecognizer recognizer = new LiveSpeechRecognizer(configuration);
+            recognizer.startRecognition(true);
+
+            Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(() -> {
+                String result = recognizer.getResult().getHypothesis();
+                SwingUtilities.invokeLater(() -> {
+                    JFrame frame = getMainFrame();
+                    if (frame != null) {
+                        JLabel voiceCommandLabel = getVoiceCommandLabel(frame);
+                        if (voiceCommandLabel != null) {
+                            voiceCommandLabel.setText("Your voice command: " + result);
+                        }
+                    }
+                });
+                for (String command : new String[]{"feed", "shower", "pee", "drink", "minigame"}) {
+                    if (result.toLowerCase().contains(command)) {
+                        SwingUtilities.invokeLater(() -> {
+                            JFrame frame = getMainFrame();
+                            if (frame != null) {
+                                performButtonClick(frame, command);
+                            }
+                        });
+                    }
+                }
+            }, 0, 500, TimeUnit.MILLISECONDS);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static JLabel getVoiceCommandLabel(JFrame frame) {
+        for (Component component : frame.getContentPane().getComponents()) {
+            if (component instanceof JLabel && component.getName() != null && component.getName().equals("voiceCommandLabel")) {
+                return (JLabel) component;
+            }
+        }
+        return null;
+    }
+
+    private static JFrame getMainFrame() {
+        for (Frame frame : Frame.getFrames()) {
+            if (frame.getTitle().equals("Tamagotchi")) {
+                return (JFrame) frame;
+            }
+        }
+        return null;
+    }
+
+    private static void performButtonClick(JFrame frame, String command) {
+        for (Component component : frame.getContentPane().getComponents()) {
+            if (component instanceof JButton) {
+                JButton button = (JButton) component;
+                if (button.getText().equalsIgnoreCase(command)) {
+                    button.doClick();
+                    break;
+                }
+            }
+        }
     }
 
 }

@@ -10,7 +10,6 @@ import java.io.IOException;
 
 public class GUIMain {
 
-
     public static void runGUI() {
         JFrame frame = createWindow();
 
@@ -20,13 +19,13 @@ public class GUIMain {
             e.printStackTrace();
         }
 
-        addLabelWithImage(frame, "src/main/java/softwaredesign/images/cristianobasic.png", 135, 175, 250, 250);
+        parseCharacter(frame);
 
-        addProgressBar(frame, 90, "Hunger", 10, new Color(128, 0, 0), new Color(255, 182, 193), 90, true);
-        addProgressBar(frame, 85, "Hygiene", 50, new Color(0, 11, 255), new Color(204, 222, 255), 10, false);
-        addProgressBar(frame, 70, "Bladder", 90, new Color(96, 77, 0), new Color(236, 224, 181), 90, true);
-        addProgressBar(frame, 10, "Thirst", 130, new Color(6, 58, 0), new Color(225, 250, 225), 90, true);
-        addProgressBar(frame, 25, "Mood", 170, new Color(86, 0, 66), new Color(255, 234, 253), 10, false);
+        addProgressBar(frame, new ProgressBarConfig(90, "Hunger", 10, new Color(128, 0, 0), new Color(255, 182, 193), 90, true));
+        addProgressBar(frame, new ProgressBarConfig(85, "Hygiene", 50, new Color(0, 11, 255), new Color(204, 222, 255), 10, false));
+        addProgressBar(frame, new ProgressBarConfig(70, "Bladder", 90, new Color(96, 77, 0), new Color(236, 224, 181), 90, true));
+        addProgressBar(frame, new ProgressBarConfig(10, "Thirst", 130, new Color(6, 58, 0), new Color(225, 250, 225), 90, true));
+        addProgressBar(frame, new ProgressBarConfig(25, "Mood", 170, new Color(86, 0, 66), new Color(255, 234, 253), 10, false));
 
         addButton(frame, "Feed", 10, e -> buttonClickAction(frame, e));
         addButton(frame, "Shower", 50, e -> buttonClickAction(frame, e));
@@ -39,7 +38,7 @@ public class GUIMain {
 
     private static JFrame createWindow() {
         JFrame frame = new JFrame("Tamagotchi");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setSize(500, 500);
         frame.setLocationRelativeTo(null);
         return frame;
@@ -52,38 +51,38 @@ public class GUIMain {
         frame.setContentPane(backgroundLabel);
     }
 
-    private static void addLabelWithImage(JFrame frame, String imagePath, int x, int y, int width, int height) {
-        ImageIcon icon = new ImageIcon(imagePath);
+    private static void parseCharacter(JFrame frame) {
+        ImageIcon icon = new ImageIcon("src/main/java/softwaredesign/images/cristianobasic.png");
         JLabel label = new JLabel(icon);
-        label.setBounds(x, y, width, height);
+        label.setBounds(135, 175, 250, 250);
         label.setHorizontalAlignment(SwingConstants.CENTER);
         frame.add(label);
     }
 
-    private static void addProgressBar(JFrame frame, int value, String text, int y, Color fg, Color bg, int criticalValue, boolean isValIncreasing) {
+    private static void addProgressBar(JFrame frame, ProgressBarConfig config) {
         JProgressBar progressBar = new JProgressBar(0, 100);
-        progressBar.setValue(value);
+        progressBar.setValue(config.value);
         progressBar.setStringPainted(true);
-        progressBar.setString(text + ": " + progressBar.getValue() + "%");
-        progressBar.setBounds(10, y, 150, 20);
-        progressBar.setForeground(fg);
-        progressBar.setBackground(bg);
+        progressBar.setString(config.text + ": " + progressBar.getValue() + "%");
+        progressBar.setBounds(10, config.y, 150, 20);
+        progressBar.setForeground(config.fg);
+        progressBar.setBackground(config.bg);
         progressBar.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        progressBar.setName(text + "Bar");
+        progressBar.setName(config.text + "Bar");
         frame.add(progressBar);
 
         ImageIcon warningIcon = new ImageIcon("src/main/java/softwaredesign/images/warning.png");
         JLabel warningLabel = new JLabel(warningIcon);
-        warningLabel.setBounds(165, y, warningIcon.getIconWidth(), warningIcon.getIconHeight());
+        warningLabel.setBounds(165, config.y, warningIcon.getIconWidth(), warningIcon.getIconHeight());
         warningLabel.setVisible(false);
-        warningLabel.setName(text + "Warning");
+        warningLabel.setName(config.text + "Warning");
         frame.add(warningLabel);
 
-        if (isValIncreasing && value >= criticalValue) {
+        if (config.isValIncreasing && config.value >= config.criticalValue) {
             warningLabel.setVisible(true);
         }
 
-        if (!isValIncreasing && value <= criticalValue) {
+        if (!config.isValIncreasing && config.value <= config.criticalValue) {
             warningLabel.setVisible(true);
         }
     }
@@ -97,90 +96,51 @@ public class GUIMain {
     }
 
     private static void buttonClickAction(JFrame frame, ActionEvent e) {
-        // Get all components in the frame's content pane
         Component[] components = frame.getContentPane().getComponents();
+        disableAllButtons(components);
 
-        // Disable all buttons
+        JButton buttonClicked = (JButton) e.getSource();
+        String progressBarToUpdate;
+        String animationImage;
+        int incrementVal;
+
+        progressBarToUpdate = getProgressBarToUpdate(buttonClicked);
+        animationImage = getAnimationImage(buttonClicked);
+        incrementVal = getIncrementVal(buttonClicked);
+
+        updateProgressBar(components, progressBarToUpdate, incrementVal, frame);
+        JLabel feedingLabel = addLabelWithImageAndReturn(frame, animationImage);
+        animateAndReEnableButtons(frame, components, feedingLabel);
+    }
+
+    private static void disableAllButtons(Component[] components) {
         for (Component component : components) {
             if (component instanceof JButton) {
                 JButton button = (JButton) component;
                 button.setEnabled(false);
             }
         }
+    }
 
-        JButton buttonClicked = (JButton) e.getSource();
-
-        // Determine the progress bar to update based on the clicked button
-        String progressBarToUpdate = "";
-        String animationImage = "";
-        int incrementVal = 0;
-        switch (buttonClicked.getText()) {
-            case "Feed":
-                progressBarToUpdate = "Hunger";
-                animationImage = "src/main/java/softwaredesign/images/chicken.png";
-                incrementVal = -10;
-                break;
-            case "Shower":
-                progressBarToUpdate = "Hygiene";
-                animationImage = "src/main/java/softwaredesign/images/waterdroplet.png";
-                incrementVal = 10;
-                break;
-            case "Pee":
-                progressBarToUpdate = "Bladder";
-                animationImage = "src/main/java/softwaredesign/images/toilet.png";
-                incrementVal = -10;
-                break;
-            case "Drink":
-                progressBarToUpdate = "Thirst";
-                animationImage = "src/main/java/softwaredesign/images/bottle.png";
-                incrementVal = -10;
-                break;
-            case "Minigame":
-                progressBarToUpdate = "Mood";
-                animationImage = "src/main/java/softwaredesign/images/chicken.png";
-                incrementVal = 10;
-                break;
-            default:
-                progressBarToUpdate = "";
-                break;
-        }
-
-
-        // Iterate through the components and update the specified progress bar
+    private static void updateProgressBar(Component[] components, String progressBarToUpdate, int incrementVal, JFrame frame) {
         for (Component component : components) {
             if (component instanceof JProgressBar) {
                 JProgressBar progressBar = (JProgressBar) component;
                 if (progressBar.getString().startsWith(progressBarToUpdate)) {
                     int newValue = progressBar.getValue() + incrementVal;
-                    if (newValue > 100) newValue = 100;
-                    else if (newValue < 0) newValue = 0;
+                    newValue = Math.max(0, Math.min(100, newValue));
                     progressBar.setValue(newValue);
                     progressBar.setString(progressBarToUpdate + ": " + newValue + "%");
                     frame.revalidate();
                     frame.repaint();
 
-                    // Show or hide warning label based on the progress bar value
-                    String warningLabelName = progressBar.getName().replace("Bar", "Warning");
-                    for (Component comp : components) {
-                        if (comp instanceof JLabel && comp.getName() != null && comp.getName().equals(warningLabelName)) {
-                            JLabel warningLabel = (JLabel) comp;
-                            if (incrementVal < 0 && newValue >= 90) {
-                                warningLabel.setVisible(true);
-                            } else if (incrementVal > 0 && newValue <= 10) {
-                                warningLabel.setVisible(true);
-                            }
-                            else {
-                                warningLabel.setVisible(false);
-                            }
-                            break;
-                        }
-                    }
+                    updateWarningLabel(components, progressBar, incrementVal, newValue);
                 }
             }
         }
+    }
 
-        JLabel feedingLabel = addLabelWithImageAndReturn(frame, animationImage);
-
+    private static void animateAndReEnableButtons(JFrame frame, Component[] components, JLabel feedingLabel) {
         Timer timer = new Timer(50, null);
         timer.addActionListener(new ActionListener() {
             int count = 0;
@@ -197,19 +157,83 @@ public class GUIMain {
                     frame.remove(feedingLabel);
                     frame.revalidate();
                     frame.repaint();
-
-                    // Re-enable all buttons
-                    for (Component component : components) {
-                        if (component instanceof JButton) {
-                            JButton button = (JButton) component;
-                            button.setEnabled(true);
-                        }
-                    }
+                    reEnableAllButtons(components);
                 }
             }
         });
 
         timer.start();
+    }
+
+    private static void reEnableAllButtons(Component[] components) {
+        for (Component component : components) {
+            if (component instanceof JButton) {
+                JButton button = (JButton) component;
+                button.setEnabled(true);
+            }
+        }
+    }
+
+    private static String getProgressBarToUpdate(JButton buttonClicked) {
+        switch (buttonClicked.getText()) {
+            case "Feed":
+                return "Hunger";
+            case "Shower":
+                return "Hygiene";
+            case "Pee":
+                return "Bladder";
+            case "Drink":
+                return "Thirst";
+            case "Minigame":
+                return "Mood";
+            default:
+                return "";
+        }
+    }
+
+    private static String getAnimationImage(JButton buttonClicked) {
+        switch (buttonClicked.getText()) {
+            case "Feed":
+                return "src/main/java/softwaredesign/images/chicken.png";
+            case "Shower":
+                return "src/main/java/softwaredesign/images/waterdroplet.png";
+            case "Pee":
+                return "src/main/java/softwaredesign/images/toilet.png";
+            case "Drink":
+                return "src/main/java/softwaredesign/images/bottle.png";
+            case "Minigame":
+                return "src/main/java/softwaredesign/images/chicken.png";
+            default:
+                return "";
+        }
+    }
+
+    private static int getIncrementVal(JButton buttonClicked) {
+        switch (buttonClicked.getText()) {
+            case "Feed":
+                return -10;
+            case "Shower":
+                return 10;
+            case "Pee":
+                return -10;
+            case "Drink":
+                return -10;
+            case "Minigame":
+                return 10;
+            default:
+                return 0;
+        }
+    }
+
+    private static void updateWarningLabel(Component[] components, JProgressBar progressBar, int incrementVal, int newValue) {
+        String warningLabelName = progressBar.getName().replace("Bar", "Warning");
+        for (Component comp : components) {
+            if (comp instanceof JLabel && comp.getName() != null && comp.getName().equals(warningLabelName)) {
+                JLabel warningLabel = (JLabel) comp;
+                warningLabel.setVisible((incrementVal < 0 && newValue >= 90) || (incrementVal > 0 && newValue <= 10));
+                break;
+            }
+        }
     }
 
 
@@ -230,7 +254,22 @@ public class GUIMain {
 
 }
 
+class ProgressBarConfig {
+    int value;
+    String text;
+    int y;
+    Color fg;
+    Color bg;
+    int criticalValue;
+    boolean isValIncreasing;
 
-
-
-
+    public ProgressBarConfig(int value, String text, int y, Color fg, Color bg, int criticalValue, boolean isValIncreasing) {
+        this.value = value;
+        this.text = text;
+        this.y = y;
+        this.fg = fg;
+        this.bg = bg;
+        this.criticalValue = criticalValue;
+        this.isValIncreasing = isValIncreasing;
+    }
+}

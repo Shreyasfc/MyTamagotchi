@@ -1,4 +1,4 @@
-package softwaredesign;
+package softwaredesign.GUI;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

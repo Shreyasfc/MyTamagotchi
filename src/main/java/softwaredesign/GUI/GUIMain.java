@@ -1,4 +1,4 @@
-package softwaredesign;
+package softwaredesign.GUI;
 
 import edu.cmu.sphinx.api.Configuration;
 import edu.cmu.sphinx.api.LiveSpeechRecognizer;
@@ -55,8 +55,16 @@ public class GUIMain extends DefaultScene {
 
 
     private static void addProgressBar(JFrame frame, ProgressBarConfig config, ComponentFactory factory) {
-        JProgressBar progressBar = factory.createProgressBar(config.value, config.text, config.y, config.fg, config.bg, config.criticalValue, config.isValIncreasing);
+        ObservableProgressBar progressBar = (ObservableProgressBar) factory.createProgressBar(config.value, config.text, config.y, config.fg, config.bg, config.criticalValue, config.isValIncreasing);
         frame.add(progressBar);
+
+        WarningLabel warningLabel = new WarningLabel(config.text + " Warning!", config.criticalValue, config.isValIncreasing);
+        warningLabel.setName(config.text + "Warning");
+        warningLabel.setBounds(progressBar.getX() + progressBar.getWidth() + 5, progressBar.getY(), 100, 20);
+        warningLabel.setForeground(Color.RED);
+        warningLabel.setVisible(false);
+        progressBar.addObserver(warningLabel);
+        frame.add(warningLabel);
     }
 
     private static void addButton(JFrame frame, String text, int y, ActionListener action, ComponentFactory factory) {
@@ -77,7 +85,7 @@ public class GUIMain extends DefaultScene {
         animationImage = getAnimationImage(buttonClicked);
         incrementVal = getIncrementVal(buttonClicked);
 
-        updateProgressBar(components, progressBarToUpdate, incrementVal, frame);
+        visuallyUpdateProgressBar(components, progressBarToUpdate, incrementVal, frame);
         JLabel feedingLabel = addLabelWithImageAndReturn(frame, animationImage);
         animateAndReEnableButtons(frame, components, feedingLabel);
     }
@@ -91,7 +99,8 @@ public class GUIMain extends DefaultScene {
         }
     }
 
-    private static void updateProgressBar(Component[] components, String progressBarToUpdate, int incrementVal, JFrame frame) {
+    private static void visuallyUpdateProgressBar(Component[] components, String progressBarToUpdate, int incrementVal, JFrame frame) {
+
         for (Component component : components) {
             if (component instanceof JProgressBar) {
                 JProgressBar progressBar = (JProgressBar) component;
@@ -102,11 +111,10 @@ public class GUIMain extends DefaultScene {
                     progressBar.setString(progressBarToUpdate + ": " + newValue + "%");
                     frame.revalidate();
                     frame.repaint();
-
-                    updateWarningLabel(components, progressBar, incrementVal, newValue);
                 }
             }
         }
+
     }
 
     private static void animateAndReEnableButtons(JFrame frame, Component[] components, JLabel feedingLabel) {
@@ -193,18 +201,6 @@ public class GUIMain extends DefaultScene {
                 return 0;
         }
     }
-
-    private static void updateWarningLabel(Component[] components, JProgressBar progressBar, int incrementVal, int newValue) {
-        String warningLabelName = progressBar.getName().replace("Bar", "Warning");
-        for (Component comp : components) {
-            if (comp instanceof JLabel && comp.getName() != null && comp.getName().equals(warningLabelName)) {
-                JLabel warningLabel = (JLabel) comp;
-                warningLabel.setVisible((incrementVal < 0 && newValue >= 90) || (incrementVal > 0 && newValue <= 10));
-                break;
-            }
-        }
-    }
-
 
     private static JLabel addLabelWithImageAndReturn(JFrame frame, String imagePath) {
         ImageIcon icon = new ImageIcon(imagePath);

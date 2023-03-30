@@ -1,4 +1,4 @@
-package softwaredesign;
+package softwaredesign.GUI;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,7 +8,8 @@ public class DefaultComponentFactory implements ComponentFactory {
 
     @Override
     public JProgressBar createProgressBar(int value, String text, int y, Color fg, Color bg, int criticalValue, boolean isValIncreasing) {
-        JProgressBar progressBar = new JProgressBar(0, 100);
+        ObservableProgressBar progressBar = new ObservableProgressBar(0, 100);
+
         progressBar.setValue(value);
         progressBar.setStringPainted(true);
         progressBar.setString(text + ": " + progressBar.getValue() + "%");

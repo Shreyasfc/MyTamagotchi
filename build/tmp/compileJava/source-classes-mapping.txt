@@ -1,17 +1,23 @@
-softwaredesign/GUIEndGame.java
- softwaredesign.GUIEndGame
-softwaredesign/DefaultScene.java
- softwaredesign.DefaultScene
-softwaredesign/GUISelectChar.java
- softwaredesign.GUISelectChar
- softwaredesign.GUISelectChar$1
 softwaredesign/Main.java
  softwaredesign.Main
-softwaredesign/ComponentFactory.java
- softwaredesign.ComponentFactory
-softwaredesign/DefaultComponentFactory.java
- softwaredesign.DefaultComponentFactory
-softwaredesign/GUIMain.java
- softwaredesign.GUIMain
- softwaredesign.GUIMain$1
- softwaredesign.ProgressBarConfig
+softwaredesign/GUI/ComponentFactory.java
+ softwaredesign.GUI.ComponentFactory
+softwaredesign/GUI/GUIEndGame.java
+ softwaredesign.GUI.GUIEndGame
+softwaredesign/GUI/GUISelectChar.java
+ softwaredesign.GUI.GUISelectChar
+ softwaredesign.GUI.GUISelectChar$1
+softwaredesign/GUI/DefaultScene.java
+ softwaredesign.GUI.DefaultScene
+softwaredesign/GUI/ProgressBarObserver.java
+ softwaredesign.GUI.ProgressBarObserver
+softwaredesign/GUI/ObservableProgressBar.java
+ softwaredesign.GUI.ObservableProgressBar
+softwaredesign/GUI/DefaultComponentFactory.java
+ softwaredesign.GUI.DefaultComponentFactory
+softwaredesign/GUI/WarningLabel.java
+ softwaredesign.GUI.WarningLabel
+softwaredesign/GUI/GUIMain.java
+ softwaredesign.GUI.GUIMain
+ softwaredesign.GUI.GUIMain$1
+ softwaredesign.GUI.ProgressBarConfig

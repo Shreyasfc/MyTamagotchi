@@ -7,6 +7,10 @@ softwaredesign/GUISelectChar.java
  softwaredesign.GUISelectChar$1
 softwaredesign/Main.java
  softwaredesign.Main
+softwaredesign/ComponentFactory.java
+ softwaredesign.ComponentFactory
+softwaredesign/DefaultComponentFactory.java
+ softwaredesign.DefaultComponentFactory
 softwaredesign/GUIMain.java
  softwaredesign.GUIMain
  softwaredesign.GUIMain$1

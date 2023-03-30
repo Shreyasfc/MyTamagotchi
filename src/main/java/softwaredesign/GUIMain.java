@@ -18,79 +18,50 @@ public class GUIMain extends DefaultScene {
 
         JFrame frame = createWindow();
 
+        ComponentFactory factory = new DefaultComponentFactory();
+
         try {
             setContentPaneWithImage(frame);
+            parseCharacter(frame);
+
+            addProgressBar(frame, new ProgressBarConfig(90, "Hunger", 10, new Color(128, 0, 0), new Color(255, 182, 193), 90, true), factory);
+            addProgressBar(frame, new ProgressBarConfig(85, "Hygiene", 50, new Color(0, 11, 255), new Color(204, 222, 255), 10, false), factory);
+            addProgressBar(frame, new ProgressBarConfig(70, "Bladder", 90, new Color(96, 77, 0), new Color(236, 224, 181), 90, true), factory);
+            addProgressBar(frame, new ProgressBarConfig(10, "Thirst", 130, new Color(6, 58, 0), new Color(225, 250, 225), 90, true), factory);
+            addProgressBar(frame, new ProgressBarConfig(25, "Mood", 170, new Color(86, 0, 66), new Color(255, 234, 253), 10, false), factory);
+
+            addButton(frame, "Feed", 10, e -> buttonClickAction(frame, e), factory);
+            addButton(frame, "Shower", 50, e -> buttonClickAction(frame, e), factory);
+            addButton(frame, "Pee", 90, e -> buttonClickAction(frame, e), factory);
+            addButton(frame, "Drink", 130, e -> buttonClickAction(frame, e), factory);
+            addButton(frame, "Minigame", 170, e -> buttonClickAction(frame, e), factory);
+
+            addVoiceCommandLabels(frame);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        parseCharacter(frame);
-
-        addProgressBar(frame, new ProgressBarConfig(90, "Hunger", 10, new Color(128, 0, 0), new Color(255, 182, 193), 90, true));
-        addProgressBar(frame, new ProgressBarConfig(85, "Hygiene", 50, new Color(0, 11, 255), new Color(204, 222, 255), 10, false));
-        addProgressBar(frame, new ProgressBarConfig(70, "Bladder", 90, new Color(96, 77, 0), new Color(236, 224, 181), 90, true));
-        addProgressBar(frame, new ProgressBarConfig(10, "Thirst", 130, new Color(6, 58, 0), new Color(225, 250, 225), 90, true));
-        addProgressBar(frame, new ProgressBarConfig(25, "Mood", 170, new Color(86, 0, 66), new Color(255, 234, 253), 10, false));
-
-        addButton(frame, "Feed", 10, e -> buttonClickAction(frame, e));
-        addButton(frame, "Shower", 50, e -> buttonClickAction(frame, e));
-        addButton(frame, "Pee", 90, e -> buttonClickAction(frame, e));
-        addButton(frame, "Drink", 130, e -> buttonClickAction(frame, e));
-        addButton(frame, "Minigame", 170, e -> buttonClickAction(frame, e));
-
-        JLabel voiceCommandLabel = new JLabel("Your voice command: ");
-        voiceCommandLabel.setName("voiceCommandLabel");
-        voiceCommandLabel.setBounds(10, 210, 200, 30);
-        voiceCommandLabel.setForeground(Color.BLACK); // Set the text color to black
-        voiceCommandLabel.setBackground(Color.WHITE); // Set the background color to white
-        voiceCommandLabel.setOpaque(true); // Make the background visible
-        frame.add(voiceCommandLabel);
 
         frame.setVisible(true);
     }
 
     private static void parseCharacter(JFrame frame) {
-        ImageIcon icon = new ImageIcon("src/main/java/softwaredesign/images/cristianobasic.png");
+        ImageIcon icon = new ImageIcon("src/main/java/softwaredesign/images/messibasic.png");
         JLabel label = new JLabel(icon);
         label.setBounds(135, 175, 250, 250);
         label.setHorizontalAlignment(SwingConstants.CENTER);
         frame.add(label);
     }
 
-    private static void addProgressBar(JFrame frame, ProgressBarConfig config) {
-        JProgressBar progressBar = new JProgressBar(0, 100);
-        progressBar.setValue(config.value);
-        progressBar.setStringPainted(true);
-        progressBar.setString(config.text + ": " + progressBar.getValue() + "%");
-        progressBar.setBounds(10, config.y, 150, 20);
-        progressBar.setForeground(config.fg);
-        progressBar.setBackground(config.bg);
-        progressBar.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        progressBar.setName(config.text + "Bar");
+
+    private static void addProgressBar(JFrame frame, ProgressBarConfig config, ComponentFactory factory) {
+        JProgressBar progressBar = factory.createProgressBar(config.value, config.text, config.y, config.fg, config.bg, config.criticalValue, config.isValIncreasing);
         frame.add(progressBar);
-
-        ImageIcon warningIcon = new ImageIcon("src/main/java/softwaredesign/images/warning.png");
-        JLabel warningLabel = new JLabel(warningIcon);
-        warningLabel.setBounds(165, config.y, warningIcon.getIconWidth(), warningIcon.getIconHeight());
-        warningLabel.setVisible(false);
-        warningLabel.setName(config.text + "Warning");
-        frame.add(warningLabel);
-
-        if (config.isValIncreasing && config.value >= config.criticalValue) {
-            warningLabel.setVisible(true);
-        }
-
-        if (!config.isValIncreasing && config.value <= config.criticalValue) {
-            warningLabel.setVisible(true);
-        }
     }
 
-    private static void addButton(JFrame frame, String text, int y, ActionListener action) {
-        JButton button = new JButton(text);
-        button.setBounds(375, y, 100, 30);
-        button.setPreferredSize(new Dimension(80, 30));
+    private static void addButton(JFrame frame, String text, int y, ActionListener action, ComponentFactory factory) {
+        JButton button = factory.createButton(text, y, action);
         frame.add(button);
-        button.addActionListener(action);
     }
 
     private static void buttonClickAction(JFrame frame, ActionEvent e) {
@@ -244,6 +215,23 @@ public class GUIMain extends DefaultScene {
         return label;
     }
 
+    private static void addVoiceCommandLabels(JFrame frame) {
+        JLabel voiceCommandLabel = new JLabel("Your voice command: ");
+        voiceCommandLabel.setName("voiceCommandLabel");
+        voiceCommandLabel.setBounds(10, 210, 200, 30);
+        voiceCommandLabel.setForeground(Color.BLACK); // Set the text color to black
+        voiceCommandLabel.setBackground(Color.WHITE); // Set the background color to white
+        voiceCommandLabel.setOpaque(true); // Make the background visible
+        frame.add(voiceCommandLabel);
+
+        JLabel warningLabel = new JLabel("*Voice command may take a few minutes to load");
+        warningLabel.setName("warningLabel");
+        warningLabel.setBounds(10, 240, 200, 30);
+        warningLabel.setForeground(Color.RED); // Set the text color to red
+        warningLabel.setFont(new Font("Arial", Font.PLAIN, 8));
+        frame.add(warningLabel);
+    }
+
     public static void main(String[] args) {
 
         runGUI();
@@ -305,6 +293,7 @@ public class GUIMain extends DefaultScene {
                 return (JLabel) component;
             }
         }
+
         return null;
     }
 

@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 
 public class GUIMain extends DefaultScene {
 
-    public static void runGUI() {
+    public static JFrame runGUI() {
 
         JFrame frame = createWindow();
 
@@ -43,6 +43,8 @@ public class GUIMain extends DefaultScene {
         }
 
         frame.setVisible(true);
+
+        return frame;
     }
 
     private static void parseCharacter(JFrame frame) {
@@ -228,16 +230,9 @@ public class GUIMain extends DefaultScene {
         frame.add(warningLabel);
     }
 
-    public static void main(String[] args) {
+    public static void setupVoiceRecognition(JFrame mainFrame) {
 
-        runGUI();
-        setupVoiceRecognition();
-
-    }
-
-    private static void setupVoiceRecognition() {
-
-        //This mini-segment aims to block the annoying logger messages
+        // This mini-segment aims to block the annoying logger messages
         Logger cmRootLogger = Logger.getLogger("default.config");
         cmRootLogger.setLevel(java.util.logging.Level.OFF);
         String conFile = System.getProperty("java.util.logging.config.file");
@@ -251,36 +246,31 @@ public class GUIMain extends DefaultScene {
         configuration.setDictionaryPath("resource:/edu/cmu/sphinx/models/en-us/cmudict-en-us.dict");
         configuration.setLanguageModelPath("resource:/edu/cmu/sphinx/models/en-us/en-us.lm.bin");
 
-        try {
-            LiveSpeechRecognizer recognizer = new LiveSpeechRecognizer(configuration);
-            recognizer.startRecognition(true);
+        // Use the Singleton pattern for the voice recognition setup
+        VoiceRecognitionSingleton voiceRecognitionSingleton = VoiceRecognitionSingleton.getInstance(configuration);
+        LiveSpeechRecognizer recognizer = voiceRecognitionSingleton.getRecognizer();
+        recognizer.startRecognition(true);
 
-            Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(() -> {
-                String result = recognizer.getResult().getHypothesis();
-                SwingUtilities.invokeLater(() -> {
-                    JFrame frame = getMainFrame();
-                    if (frame != null) {
-                        JLabel voiceCommandLabel = getVoiceCommandLabel(frame);
-                        if (voiceCommandLabel != null) {
-                            voiceCommandLabel.setText("Your voice command: " + result);
-                        }
-                    }
-                });
-                for (String command : new String[]{"feed", "shower", "pee", "drink", "minigame"}) {
-                    if (result.toLowerCase().contains(command)) {
-                        SwingUtilities.invokeLater(() -> {
-                            JFrame frame = getMainFrame();
-                            if (frame != null) {
-                                performButtonClick(frame, command);
-                            }
-                        });
+        Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(() -> {
+            String result = recognizer.getResult().getHypothesis();
+            SwingUtilities.invokeLater(() -> {
+                if (mainFrame != null) {
+                    JLabel voiceCommandLabel = getVoiceCommandLabel(mainFrame);
+                    if (voiceCommandLabel != null) {
+                        voiceCommandLabel.setText("Your voice command: " + result);
                     }
                 }
-            }, 0, 500, TimeUnit.MILLISECONDS);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            });
+            for (String command : new String[]{"feed", "shower", "pee", "drink", "minigame"}) {
+                if (result.toLowerCase().contains(command)) {
+                    SwingUtilities.invokeLater(() -> {
+                        if (mainFrame != null) {
+                            performButtonClick(mainFrame, command);
+                        }
+                    });
+                }
+            }
+        }, 0, 500, TimeUnit.MILLISECONDS);
     }
 
     private static JLabel getVoiceCommandLabel(JFrame frame) {
@@ -289,20 +279,11 @@ public class GUIMain extends DefaultScene {
                 return (JLabel) component;
             }
         }
-
+        System.out.println("Voice command label not found.");
         return null;
     }
 
-    private static JFrame getMainFrame() {
-        for (Frame frame : Frame.getFrames()) {
-            if (frame.getTitle().equals("Tamagotchi")) {
-                return (JFrame) frame;
-            }
-        }
-        return null;
-    }
-
-    private static void performButtonClick(JFrame frame, String command) {
+    static void performButtonClick(JFrame frame, String command) {
         for (Component component : frame.getContentPane().getComponents()) {
             if (component instanceof JButton) {
                 JButton button = (JButton) component;

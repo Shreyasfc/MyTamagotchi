@@ -15,13 +15,19 @@ public class GUISelectChar extends DefaultScene {
 
     private static int currentImageIndex = 0;
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(GUISelectChar::createAndShowGUI);
-    }
-
-    private static void createAndShowGUI() {
+    public static void runGUI(Runnable callback) {
 
         JFrame frame = createWindow();
+
+        frame.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosed(java.awt.event.WindowEvent e) {
+                if (callback != null) {
+                    callback.run();
+                }
+            }
+        });
+
         try {
             setContentPaneWithImage(frame);
             createImageCarousel(frame);
@@ -47,6 +53,18 @@ public class GUISelectChar extends DefaultScene {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 System.out.println("Image clicked: " + imageFiles[currentImageIndex]);
+
+                // Find the parent JFrame of the imageLabel
+                Component component = (Component) e.getSource();
+                while (!(component instanceof JFrame) && component != null) {
+                    component = component.getParent();
+                }
+
+                // If a JFrame is found, dispose of it and close the GUI
+                if (component != null) {
+                    JFrame frame = (JFrame) component;
+                    frame.dispose();
+                }
             }
         });
 

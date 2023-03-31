@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 
-public class GUIEndGame extends DefaultScene {
+public class GUIEndGame extends GUI {
 
     public static void runGUI() {
 

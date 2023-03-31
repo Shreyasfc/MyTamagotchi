@@ -1,4 +1,4 @@
-package softwaredesign.GUI;
+package softwaredesign.voicehandler;
 
 import edu.cmu.sphinx.api.Configuration;
 import edu.cmu.sphinx.api.LiveSpeechRecognizer;

@@ -3,7 +3,7 @@ package softwaredesign.GUI;
 import javax.swing.*;
 import java.awt.*;
 
-public class DefaultComponentFactory implements ComponentFactory {
+public class DefaultMainMenuVisualComponents implements ComponentFactory {
 
     @Override
     public JProgressBar createProgressBar(int value, String text, int y, Color fg, Color bg, int criticalValue, boolean isValIncreasing) {
@@ -26,7 +26,6 @@ public class DefaultComponentFactory implements ComponentFactory {
         JButton button = new JButton(text);
         button.setBounds(375, y, 100, 30);
         button.setPreferredSize(new Dimension(80, 30));
-
         return button;
     }
 

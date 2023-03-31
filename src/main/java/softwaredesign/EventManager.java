@@ -1,18 +1,16 @@
 package softwaredesign;
 
-import softwaredesign.GUI.GUIMain;
-import softwaredesign.GUI.GUISelectChar;
-
-import javax.swing.*;
-
 public class EventManager {
 
     private static void startGame(){
 
+        /*
         GUISelectChar.runGUI(() -> {
             JFrame mainFrame = GUIMain.runGUI();
             GUIMain.setupVoiceRecognition(mainFrame);
         });
+
+         */
 
     }
 

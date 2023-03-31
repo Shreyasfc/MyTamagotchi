@@ -5,18 +5,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ButtonClickActionCommand implements Command {
-    private JFrame frame;
-    private String progressBarToUpdate;
-    private String animationImagePath;
-    private int incrementVal;
-
-    public ButtonClickActionCommand(JFrame frame, String progressBarToUpdate, String animationImagePath, int incrementVal) {
-        this.frame = frame;
-        this.progressBarToUpdate = progressBarToUpdate;
-        this.animationImagePath = animationImagePath;
-        this.incrementVal = incrementVal;
-    }
+public class ModifyStatusCommand implements Command {
+    private final JFrame frame;
+    private final String progressBarToUpdate;
+    private final String animationImagePath;
+    private final int incrementVal;
 
     @Override
     public void execute() {
@@ -25,6 +18,13 @@ public class ButtonClickActionCommand implements Command {
         visuallyUpdateProgressBar(components, progressBarToUpdate, incrementVal, frame);
         JLabel feedingLabel = addLabelWithImageAndReturn(frame, animationImagePath);
         animateAndReEnableButtons(frame, components, feedingLabel);
+    }
+
+    public ModifyStatusCommand(JFrame frame, String progressBarToUpdate, String animationImagePath, int incrementVal) {
+        this.frame = frame;
+        this.progressBarToUpdate = progressBarToUpdate;
+        this.animationImagePath = animationImagePath;
+        this.incrementVal = incrementVal;
     }
 
     private static void disableAllButtons(Component[] components) {
@@ -68,7 +68,7 @@ public class ButtonClickActionCommand implements Command {
         Timer timer = new Timer(50, null);
         timer.addActionListener(new ActionListener() {
             int count = 0;
-            final int maxCount = 8;
+            int maxCount = 8;
             int yPosition = 30;
 
             public void actionPerformed(ActionEvent e) {

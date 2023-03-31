@@ -1,38 +1,38 @@
-softwaredesign/GUI/DeathMechanism.java
- softwaredesign.GUI.DeathMechanism
-softwaredesign/GUI/UpdateProgressBarCommand.java
- softwaredesign.GUI.UpdateProgressBarCommand
+softwaredesign/GUI/ModifyStatusCommand.java
+ softwaredesign.GUI.ModifyStatusCommand
+ softwaredesign.GUI.ModifyStatusCommand$1
+softwaredesign/GUI/DefaultMainMenuVisualComponents.java
+ softwaredesign.GUI.DefaultMainMenuVisualComponents
 softwaredesign/Status.java
  softwaredesign.Status
-softwaredesign/GUI/DefaultScene.java
- softwaredesign.GUI.DefaultScene
-softwaredesign/GUI/VoiceRecognitionSingleton.java
- softwaredesign.GUI.VoiceRecognitionSingleton
+softwaredesign/GUI/ProgressBarConfig.java
+ softwaredesign.GUI.ProgressBarConfig
+softwaredesign/GUI/WarningLabel.java
+ softwaredesign.GUI.WarningLabel
 softwaredesign/GUI/ProgressBarObserver.java
  softwaredesign.GUI.ProgressBarObserver
-softwaredesign/GUI/GUIEndGame.java
- softwaredesign.GUI.GUIEndGame
+softwaredesign/GUI/ComponentFactory.java
+ softwaredesign.GUI.ComponentFactory
 softwaredesign/Footballer.java
  softwaredesign.Footballer
 softwaredesign/GUI/Command.java
  softwaredesign.GUI.Command
-softwaredesign/GUI/WarningLabel.java
- softwaredesign.GUI.WarningLabel
+softwaredesign/EventManager.java
+ softwaredesign.EventManager
 softwaredesign/GUI/ObservableProgressBar.java
  softwaredesign.GUI.ObservableProgressBar
+softwaredesign/GUI/GUI.java
+ softwaredesign.GUI.GUI
+softwaredesign/GUI/GUIEndGame.java
+ softwaredesign.GUI.GUIEndGame
+softwaredesign/GUI/DeathController.java
+ softwaredesign.GUI.DeathController
+softwaredesign/voicehandler/VoiceRecognitionSingleton.java
+ softwaredesign.voicehandler.VoiceRecognitionSingleton
+softwaredesign/voicehandler/VoiceRecognitionHelper.java
+ softwaredesign.voicehandler.VoiceRecognitionHelper
+softwaredesign/GUI/GUIMain.java
+ softwaredesign.GUI.GUIMain
 softwaredesign/GUI/GUISelectChar.java
  softwaredesign.GUI.GUISelectChar
  softwaredesign.GUI.GUISelectChar$1
- softwaredesign.GUI.GUISelectChar$2
-softwaredesign/EventManager.java
- softwaredesign.EventManager
-softwaredesign/GUI/ButtonClickActionCommand.java
- softwaredesign.GUI.ButtonClickActionCommand
- softwaredesign.GUI.ButtonClickActionCommand$1
-softwaredesign/GUI/ComponentFactory.java
- softwaredesign.GUI.ComponentFactory
-softwaredesign/GUI/DefaultComponentFactory.java
- softwaredesign.GUI.DefaultComponentFactory
-softwaredesign/GUI/GUIMain.java
- softwaredesign.GUI.GUIMain
- softwaredesign.GUI.ProgressBarConfig

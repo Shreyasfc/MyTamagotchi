@@ -4,16 +4,16 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DeathMechanism extends JLabel implements ProgressBarObserver {
+public class DeathController extends JLabel implements ProgressBarObserver {
 
-    private static final List<DeathMechanism> instances = new ArrayList<>();
+    private static final List<DeathController> instances = new ArrayList<>();
 
     boolean isActive;
     private final boolean isValIncreasing;
     private final JFrame frame;
     private final ObservableProgressBar progressBar;
 
-    public DeathMechanism(boolean isValIncreasing, JFrame frame, ObservableProgressBar progressBar) {
+    public DeathController(boolean isValIncreasing, JFrame frame, ObservableProgressBar progressBar) {
         this.isValIncreasing = isValIncreasing;
         this.frame = frame;
         this.progressBar = progressBar;
@@ -28,7 +28,7 @@ public class DeathMechanism extends JLabel implements ProgressBarObserver {
     }
 
     public void cleanUpBackgroundProcess() {
-        for (DeathMechanism instance : instances) {
+        for (DeathController instance : instances) {
             this.progressBar.removeObserver(instance);
             this.isActive = false;
         }

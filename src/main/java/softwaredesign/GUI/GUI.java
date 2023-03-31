@@ -6,7 +6,7 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
-abstract class DefaultScene {
+abstract class GUI {
 
     static JFrame createWindow() {
         JFrame frame = new JFrame("Tamagotchi");

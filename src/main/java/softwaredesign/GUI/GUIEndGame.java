@@ -39,7 +39,4 @@ public class GUIEndGame extends DefaultScene {
         frame.getContentPane().add(quitGameButton);
     }
 
-    public static void main(String[] args) {
-        runGUI();
-    }
 }

@@ -4,15 +4,21 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
-class ObservableProgressBar extends JProgressBar {
+public class ObservableProgressBar extends JProgressBar {
     private final List<ProgressBarObserver> observers = new ArrayList<>();
+    private final boolean valIncreasing;
 
-    public ObservableProgressBar(int min, int max) {
+    public ObservableProgressBar(int min, int max, boolean valIncreasing) {
         super(min, max);
+        this.valIncreasing = valIncreasing;
     }
 
     public void addObserver(ProgressBarObserver observer) {
         observers.add(observer);
+    }
+
+    public void removeObserver(ProgressBarObserver observer) {
+        observers.remove(observer);
     }
 
     @Override
@@ -26,4 +32,9 @@ class ObservableProgressBar extends JProgressBar {
             observer.update(getValue());
         }
     }
+
+    public boolean isValIncreasing() {
+        return valIncreasing;
+    }
+
 }

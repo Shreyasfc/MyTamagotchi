@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="61095b6c-b5ee-41b2-903e-a4094582981e" name="Changes" comment="Finalizing">
-      <change afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/EventManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/Footballer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/VoiceRecognitionSingleton.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/Status.java" afterDir="false" />
+    <list default="true" id="61095b6c-b5ee-41b2-903e-a4094582981e" name="Changes" comment="StartGame linked up">
+      <change afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/ButtonClickActionCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/Command.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/DeathMechanism.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/UpdateProgressBarCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.8.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.8.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.8.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -16,20 +16,20 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.8.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.8.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/a/2a0cb99a09944fb4ae19ce437fbc4c2065a030fe" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/GUIMain$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/GUIMain$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/DefaultComponentFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/DefaultComponentFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/GUIEndGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/GUIEndGame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/GUIMain$1.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/GUIMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/GUIMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/GUISelectChar$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/GUISelectChar$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/GUISelectChar.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/GUISelectChar.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/ObservableProgressBar.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/ObservableProgressBar.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/ProgressBarConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/ProgressBarConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/Main.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/ComponentFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/ComponentFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/DefaultComponentFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/DefaultComponentFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/GUIEndGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/GUIEndGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/GUIMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/GUIMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/GUISelectChar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/GUISelectChar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/ObservableProgressBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/ObservableProgressBar.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,8 +62,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -108,13 +108,13 @@
       <recent name="C:\Users\shrey\OneDrive\Documents\PenaltyMania\SD-Team-2\src\main\java\softwaredesign\images" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.EventManager">
+  <component name="RunManager" selected="Application.GUIMain">
     <configuration name="EventManager" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="softwaredesign.EventManager" />
       <module name="software-design-vu-2020.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="softwaredesign.*" />
+          <option name="PATTERN" value="softwaredesign.GUI.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -206,7 +206,8 @@
       <workItem from="1680129921786" duration="2251000" />
       <workItem from="1680163573380" duration="6994000" />
       <workItem from="1680180462833" duration="62000" />
-      <workItem from="1680206903844" duration="10596000" />
+      <workItem from="1680206903844" duration="11181000" />
+      <workItem from="1680245370885" duration="9681000" />
     </task>
     <task id="LOCAL-00001" summary="Basics of Main GUI done">
       <created>1676915085676</created>
@@ -285,7 +286,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680180119924</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="StartGame linked up">
+      <created>1680217933929</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1680217933929</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -333,6 +341,7 @@
     <MESSAGE value="All GUI code getting cleaned up well" />
     <MESSAGE value="Adding design patterns" />
     <MESSAGE value="Finalizing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finalizing" />
+    <MESSAGE value="StartGame linked up" />
+    <option name="LAST_COMMIT_MESSAGE" value="StartGame linked up" />
   </component>
 </project>

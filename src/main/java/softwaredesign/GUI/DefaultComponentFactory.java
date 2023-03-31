@@ -2,13 +2,12 @@ package softwaredesign.GUI;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
 
 public class DefaultComponentFactory implements ComponentFactory {
 
     @Override
     public JProgressBar createProgressBar(int value, String text, int y, Color fg, Color bg, int criticalValue, boolean isValIncreasing) {
-        ObservableProgressBar progressBar = new ObservableProgressBar(0, 100);
+        ObservableProgressBar progressBar = new ObservableProgressBar(0, 100, isValIncreasing);
 
         progressBar.setValue(value);
         progressBar.setStringPainted(true);
@@ -23,12 +22,12 @@ public class DefaultComponentFactory implements ComponentFactory {
     }
 
     @Override
-    public JButton createButton(String text, int y, ActionListener action) {
+    public JButton createButton(String text, int y) {
         JButton button = new JButton(text);
         button.setBounds(375, y, 100, 30);
         button.setPreferredSize(new Dimension(80, 30));
-        button.addActionListener(action);
 
         return button;
     }
+
 }

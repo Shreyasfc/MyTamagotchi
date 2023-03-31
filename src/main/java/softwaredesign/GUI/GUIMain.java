@@ -5,15 +5,24 @@ import edu.cmu.sphinx.api.LiveSpeechRecognizer;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
 public class GUIMain extends DefaultScene {
 
+    public static void main(String[] args) {
+
+        JFrame mainJFrame = runGUI();
+
+        //TODO: Watch out for command here
+        setupVoiceRecognition(mainJFrame);
+
+    }
+
+    //TODO: Figure out a way to make this universal
     public static JFrame runGUI() {
 
         JFrame frame = createWindow();
@@ -22,25 +31,40 @@ public class GUIMain extends DefaultScene {
 
         try {
             setContentPaneWithImage(frame);
+
+            //TODO: Change this
             parseCharacter(frame);
 
+            //TODO: Commands
             addProgressBar(frame, new ProgressBarConfig(90, "Hunger", 10, new Color(128, 0, 0), new Color(255, 182, 193), 90, true), factory);
             addProgressBar(frame, new ProgressBarConfig(85, "Hygiene", 50, new Color(0, 11, 255), new Color(204, 222, 255), 10, false), factory);
             addProgressBar(frame, new ProgressBarConfig(70, "Bladder", 90, new Color(96, 77, 0), new Color(236, 224, 181), 90, true), factory);
             addProgressBar(frame, new ProgressBarConfig(10, "Thirst", 130, new Color(6, 58, 0), new Color(225, 250, 225), 90, true), factory);
             addProgressBar(frame, new ProgressBarConfig(25, "Mood", 170, new Color(86, 0, 66), new Color(255, 234, 253), 10, false), factory);
 
+            /*
             addButton(frame, "Feed", 10, e -> buttonClickAction(frame, e), factory);
             addButton(frame, "Shower", 50, e -> buttonClickAction(frame, e), factory);
             addButton(frame, "Pee", 90, e -> buttonClickAction(frame, e), factory);
             addButton(frame, "Drink", 130, e -> buttonClickAction(frame, e), factory);
             addButton(frame, "Minigame", 170, e -> buttonClickAction(frame, e), factory);
+             */
 
+            addButton(frame, "Feed", 10, new ButtonClickActionCommand(frame, "Hunger", "src/main/java/softwaredesign/images/chicken.png", -10), factory);
+            addButton(frame, "Shower", 50, new ButtonClickActionCommand(frame, "Hygiene", "src/main/java/softwaredesign/images/waterdroplet.png", 10), factory);
+            addButton(frame, "Pee", 90, new ButtonClickActionCommand(frame, "Bladder", "src/main/java/softwaredesign/images/toilet.png", -10), factory);
+            addButton(frame, "Drink", 130, new ButtonClickActionCommand(frame, "Thirst", "src/main/java/softwaredesign/images/bottle.png", -10), factory);
+            addButton(frame, "Minigame", 170, new ButtonClickActionCommand(frame, "Mood", "src/main/java/softwaredesign/images/chicken.png", 10), factory);
+
+            //TODO: Figure out how to decouple this as well
             addVoiceCommandLabels(frame);
 
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        //TODO: Figure out how to decouple this as well
+        startUpdatingProgressBars(frame);
 
         frame.setVisible(true);
 
@@ -55,6 +79,24 @@ public class GUIMain extends DefaultScene {
         frame.add(label);
     }
 
+    private static void startUpdatingProgressBars(JFrame frame) {
+        ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+        executor.scheduleAtFixedRate(() -> {
+            SwingUtilities.invokeLater(() -> {
+                Component[] components = frame.getContentPane().getComponents();
+                for (Component component : components) {
+                    if (component instanceof ObservableProgressBar) {
+                        ObservableProgressBar progressBar = (ObservableProgressBar) component;
+                        int newValue = progressBar.getValue() + (progressBar.isValIncreasing() ? 1 : -1);
+                        newValue = Math.max(0, Math.min(100, newValue));
+                        progressBar.setValue(newValue);
+                        progressBar.setString(progressBar.getName() + ": " + newValue + "%");
+                    }
+                }
+            });
+        }, 0, 1, TimeUnit.SECONDS);
+    }
+
 
     private static void addProgressBar(JFrame frame, ProgressBarConfig config, ComponentFactory factory) {
         ObservableProgressBar progressBar = (ObservableProgressBar) factory.createProgressBar(config.value, config.text, config.y, config.fg, config.bg, config.criticalValue, config.isValIncreasing);
@@ -67,31 +109,54 @@ public class GUIMain extends DefaultScene {
         warningLabel.setVisible(false);
         progressBar.addObserver(warningLabel);
         frame.add(warningLabel);
+
+        //DeathMechanism deathMechanism = new DeathMechanism(progressBar.isValIncreasing(), frame, progressBar);
+        //progressBar.addObserver(deathMechanism);
     }
 
+    //TEMP
+    private static void addButton(JFrame frame, String text, int y, Command command, ComponentFactory factory) {
+        JButton button = factory.createButton(text, y);
+        button.addActionListener(e -> command.execute());
+        frame.add(button);
+    }
+
+
+    /*
     private static void addButton(JFrame frame, String text, int y, ActionListener action, ComponentFactory factory) {
         JButton button = factory.createButton(text, y, action);
         frame.add(button);
     }
+     */
 
+    /*
     private static void buttonClickAction(JFrame frame, ActionEvent e) {
         Component[] components = frame.getContentPane().getComponents();
-        disableAllButtons(components);
 
         JButton buttonClicked = (JButton) e.getSource();
+
+        //TODO: Watch out for this one too
+        if (buttonClicked.getText().equals("Minigame")) {
+            return;
+        }
+
         String progressBarToUpdate;
         String animationImage;
         int incrementVal;
 
+        disableAllButtons(components);
         progressBarToUpdate = getProgressBarToUpdate(buttonClicked);
         animationImage = getAnimationImage(buttonClicked);
         incrementVal = getIncrementVal(buttonClicked);
+        UpdateProgressBarCommand updateProgressBarCommand = new UpdateProgressBarCommand(components, progressBarToUpdate, incrementVal, frame);
+        updateProgressBarCommand.execute();
 
-        visuallyUpdateProgressBar(components, progressBarToUpdate, incrementVal, frame);
         JLabel feedingLabel = addLabelWithImageAndReturn(frame, animationImage);
         animateAndReEnableButtons(frame, components, feedingLabel);
     }
+     */
 
+    /*
     private static void disableAllButtons(Component[] components) {
         for (Component component : components) {
             if (component instanceof JButton) {
@@ -100,7 +165,9 @@ public class GUIMain extends DefaultScene {
             }
         }
     }
+     */
 
+    /*
     private static void visuallyUpdateProgressBar(Component[] components, String progressBarToUpdate, int incrementVal, JFrame frame) {
 
         for (Component component : components) {
@@ -119,7 +186,11 @@ public class GUIMain extends DefaultScene {
 
     }
 
+     */
+
+    /*
     private static void animateAndReEnableButtons(JFrame frame, Component[] components, JLabel feedingLabel) {
+
         Timer timer = new Timer(50, null);
         timer.addActionListener(new ActionListener() {
             int count = 0;
@@ -142,8 +213,12 @@ public class GUIMain extends DefaultScene {
         });
 
         timer.start();
+
     }
 
+     */
+
+    /*
     private static void reEnableAllButtons(Component[] components) {
         for (Component component : components) {
             if (component instanceof JButton) {
@@ -152,7 +227,9 @@ public class GUIMain extends DefaultScene {
             }
         }
     }
+     */
 
+    //TODO: Remove
     private static String getProgressBarToUpdate(JButton buttonClicked) {
         switch (buttonClicked.getText()) {
             case "Feed":
@@ -170,6 +247,7 @@ public class GUIMain extends DefaultScene {
         }
     }
 
+    //TODO: Remove
     private static String getAnimationImage(JButton buttonClicked) {
         switch (buttonClicked.getText()) {
             case "Feed":
@@ -187,6 +265,7 @@ public class GUIMain extends DefaultScene {
         }
     }
 
+    //TODO: Remove
     private static int getIncrementVal(JButton buttonClicked) {
         switch (buttonClicked.getText()) {
             case "Feed":
@@ -204,6 +283,7 @@ public class GUIMain extends DefaultScene {
         }
     }
 
+    /*
     private static JLabel addLabelWithImageAndReturn(JFrame frame, String imagePath) {
         ImageIcon icon = new ImageIcon(imagePath);
         JLabel label = new JLabel(icon);
@@ -212,6 +292,7 @@ public class GUIMain extends DefaultScene {
         frame.add(label);
         return label;
     }
+     */
 
     private static void addVoiceCommandLabels(JFrame frame) {
         JLabel voiceCommandLabel = new JLabel("Your voice command: ");

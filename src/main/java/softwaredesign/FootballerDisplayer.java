@@ -16,6 +16,11 @@ public class FootballerDisplayer {
             L_MESSI, "src/main/java/softwaredesign/images/messibasic.png"
     );
 
+    private static final Map<FootballerName, String> footballerMiniGameImagePath = Map.of(
+            C_RONALDO, "src/main/java/softwaredesign/images/ronaldominigame.png",
+            L_MESSI, "src/main/java/softwaredesign/images/messiminigame.png"
+    );
+
     public void setChosenFootballer(FootballerName chosenFootballer) {
 
         this.chosenFootballer = chosenFootballer;
@@ -37,6 +42,12 @@ public class FootballerDisplayer {
     public String getOneFootballerModelImagePath(FootballerName chosenFootballer){
 
         return footballerModelImagePath.get(chosenFootballer);
+
+    }
+
+    public String getOneFootballerMiniGameImagePath(FootballerName chosenFootballer){
+
+        return footballerMiniGameImagePath.get(chosenFootballer);
 
     }
 

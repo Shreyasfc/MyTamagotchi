@@ -17,7 +17,7 @@ public class DeathController extends JLabel implements ProgressBarObserver {
 
     private void endGame() {
         frame.dispose();
-        stopSignal.set(true);
+        stopSignal.compareAndSet(false, true);
     }
 
     @Override

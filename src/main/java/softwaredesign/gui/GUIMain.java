@@ -3,6 +3,7 @@ package softwaredesign.gui;
 import edu.cmu.sphinx.api.Configuration;
 import edu.cmu.sphinx.api.LiveSpeechRecognizer;
 import softwaredesign.FootballerDisplayer;
+import softwaredesign.minigame.MiniGameMain;
 import softwaredesign.voicehandler.VoiceRecognitionSingleton;
 
 import javax.swing.*;
@@ -21,7 +22,7 @@ public class GUIMain implements GUI {
 
     private final AtomicBoolean stopSignal = new AtomicBoolean(false);
 
-    private final AtomicBoolean callBackSignal = new AtomicBoolean(false);
+    private final AtomicBoolean minigameActive = new AtomicBoolean(false);
 
     private final OnGuiClosedCallback onGuiClosedCallback;
 
@@ -38,11 +39,11 @@ public class GUIMain implements GUI {
         displayModel(frame);
 
         ProgressBarConfig[] statusProgressBarsConfigs = {
-                new ProgressBarConfig(90, "Hunger", 10, new Color(128, 0, 0), new Color(255, 182, 193), 90, true),
-                new ProgressBarConfig(85, "Hygiene", 50, new Color(0, 11, 255), new Color(204, 222, 255), 10, false),
-                new ProgressBarConfig(70, "Bladder", 90, new Color(96, 77, 0), new Color(236, 224, 181), 90, true),
-                new ProgressBarConfig(10, "Thirst", 130, new Color(6, 58, 0), new Color(225, 250, 225), 90, true),
-                new ProgressBarConfig(25, "Mood", 170, new Color(86, 0, 66), new Color(255, 234, 253), 10, false),
+                new ProgressBarConfig(50, "Hunger", 10, new Color(128, 0, 0), new Color(255, 182, 193), 90, true),
+                new ProgressBarConfig(50, "Hygiene", 50, new Color(0, 11, 255), new Color(204, 222, 255), 10, false),
+                new ProgressBarConfig(50, "Bladder", 90, new Color(96, 77, 0), new Color(236, 224, 181), 90, true),
+                new ProgressBarConfig(50, "Thirst", 130, new Color(6, 58, 0), new Color(225, 250, 225), 90, true),
+                new ProgressBarConfig(50, "Mood", 170, new Color(86, 0, 66), new Color(255, 234, 253), 10, false),
         };
 
         ComponentFactory factory = new DefaultMainMenuVisualComponents();
@@ -61,7 +62,14 @@ public class GUIMain implements GUI {
         addButton(frame, "Shower", 50, new ModifyStatusCommand(frame, "Hygiene", "src/main/java/softwaredesign/images/waterdroplet.png", 10), factory);
         addButton(frame, "Pee", 90, new ModifyStatusCommand(frame, "Bladder", "src/main/java/softwaredesign/images/toilet.png", -10), factory);
         addButton(frame, "Drink", 130, new ModifyStatusCommand(frame, "Thirst", "src/main/java/softwaredesign/images/bottle.png", -10), factory);
-        addButton(frame, "Minigame", 170, new ModifyStatusCommand(frame, "Mood", "src/main/java/softwaredesign/images/chicken.png", 10), factory);
+
+        addButton(frame, "Minigame", 170, () -> {
+            minigameActive.set(!minigameActive.get());
+            OnGuiClosedCallback miniGameExit = () -> minigameActive.set(!minigameActive.get());
+            MiniGameMain miniGameMain = new MiniGameMain(miniGameExit);
+            miniGameMain.initGame();
+            new ModifyStatusCommand(frame, "Mood", "src/main/java/softwaredesign/images/chicken.png", 30).execute();
+        }, factory);
 
         setupVoiceRecognition(frame);
         addVoiceCommandLabels(frame);
@@ -84,15 +92,18 @@ public class GUIMain implements GUI {
         executor.scheduleAtFixedRate(() -> {
             if (stopSignal.get()) {
                 executor.shutdown();
-                if (callBackSignal.compareAndSet(false, true)) {
-                    try {
-                        onGuiClosedCallback.onGuiClosed();
-                    } catch (IOException e) {
-                        throw new GuiCloseException("Failed to close GUI", e);
-                    }
+                try {
+                    onGuiClosedCallback.onGuiClosed();
+                } catch (IOException e) {
+                    throw new GuiCloseException("Failed to close GUI", e);
                 }
                 return;
             }
+
+            if (minigameActive.get()) {
+                return;
+            }
+
             SwingUtilities.invokeLater(() -> {
                 int newValue = progressBar.getValue() + (progressBar.isValIncreasing() ? 1 : -1);
                 newValue = Math.max(0, Math.min(100, newValue));

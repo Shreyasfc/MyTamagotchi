@@ -1,4 +1,4 @@
-package softwaredesign.GUI;
+package softwaredesign.gui;
 
 public interface Command {
 

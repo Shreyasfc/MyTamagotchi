@@ -1,38 +1,42 @@
-softwaredesign/GUI/ModifyStatusCommand.java
- softwaredesign.GUI.ModifyStatusCommand
- softwaredesign.GUI.ModifyStatusCommand$1
-softwaredesign/GUI/DefaultMainMenuVisualComponents.java
- softwaredesign.GUI.DefaultMainMenuVisualComponents
-softwaredesign/Status.java
- softwaredesign.Status
-softwaredesign/GUI/ProgressBarConfig.java
- softwaredesign.GUI.ProgressBarConfig
-softwaredesign/GUI/WarningLabel.java
- softwaredesign.GUI.WarningLabel
-softwaredesign/GUI/ProgressBarObserver.java
- softwaredesign.GUI.ProgressBarObserver
-softwaredesign/GUI/ComponentFactory.java
- softwaredesign.GUI.ComponentFactory
-softwaredesign/Footballer.java
- softwaredesign.Footballer
-softwaredesign/GUI/Command.java
- softwaredesign.GUI.Command
-softwaredesign/EventManager.java
- softwaredesign.EventManager
-softwaredesign/GUI/ObservableProgressBar.java
- softwaredesign.GUI.ObservableProgressBar
-softwaredesign/GUI/GUI.java
- softwaredesign.GUI.GUI
-softwaredesign/GUI/GUIEndGame.java
- softwaredesign.GUI.GUIEndGame
-softwaredesign/GUI/DeathController.java
- softwaredesign.GUI.DeathController
-softwaredesign/voicehandler/VoiceRecognitionSingleton.java
- softwaredesign.voicehandler.VoiceRecognitionSingleton
+softwaredesign/FootballerName.java
+ softwaredesign.FootballerName
 softwaredesign/voicehandler/VoiceRecognitionHelper.java
  softwaredesign.voicehandler.VoiceRecognitionHelper
-softwaredesign/GUI/GUIMain.java
- softwaredesign.GUI.GUIMain
-softwaredesign/GUI/GUISelectChar.java
- softwaredesign.GUI.GUISelectChar
- softwaredesign.GUI.GUISelectChar$1
+softwaredesign/voicehandler/VoiceRecognitionSingleton.java
+ softwaredesign.voicehandler.VoiceRecognitionSingleton
+softwaredesign/gui/WarningLabel.java
+ softwaredesign.gui.WarningLabel
+softwaredesign/gui/ComponentFactory.java
+ softwaredesign.gui.ComponentFactory
+softwaredesign/gui/Command.java
+ softwaredesign.gui.Command
+softwaredesign/gui/ProgressBarObserver.java
+ softwaredesign.gui.ProgressBarObserver
+softwaredesign/gui/ProgressBarConfig.java
+ softwaredesign.gui.ProgressBarConfig
+softwaredesign/gui/ModifyStatusCommand.java
+ softwaredesign.gui.ModifyStatusCommand
+ softwaredesign.gui.ModifyStatusCommand$1
+softwaredesign/gui/GUI.java
+ softwaredesign.gui.GUI
+softwaredesign/FootballerDisplayer.java
+ softwaredesign.FootballerDisplayer
+softwaredesign/gui/GuiCloseException.java
+ softwaredesign.gui.GuiCloseException
+softwaredesign/gui/ObservableProgressBar.java
+ softwaredesign.gui.ObservableProgressBar
+softwaredesign/gui/DefaultMainMenuVisualComponents.java
+ softwaredesign.gui.DefaultMainMenuVisualComponents
+softwaredesign/gui/GUISelectChar.java
+ softwaredesign.gui.GUISelectChar
+ softwaredesign.gui.GUISelectChar$1
+softwaredesign/gui/GUIEndGame.java
+ softwaredesign.gui.GUIEndGame
+softwaredesign/gui/OnGuiClosedCallback.java
+ softwaredesign.gui.OnGuiClosedCallback
+softwaredesign/gui/DeathController.java
+ softwaredesign.gui.DeathController
+softwaredesign/EventManager.java
+ softwaredesign.EventManager
+softwaredesign/gui/GUIMain.java
+ softwaredesign.gui.GUIMain

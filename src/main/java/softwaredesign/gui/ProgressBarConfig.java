@@ -1,4 +1,4 @@
-package softwaredesign.GUI;
+package softwaredesign.gui;
 
 import java.awt.*;
 

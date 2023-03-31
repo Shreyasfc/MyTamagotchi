@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="61095b6c-b5ee-41b2-903e-a4094582981e" name="Changes" comment="Slowly decoupling commands">
-      <change afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/ProgressBarConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/voicehandler/VoiceRecognitionHelper.java" afterDir="false" />
+    <list default="true" id="61095b6c-b5ee-41b2-903e-a4094582981e" name="Changes" comment="In process of finalizing">
+      <change afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/FootballerName.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/GuiCloseException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/OnGuiClosedCallback.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.8.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.8.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.8.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -17,29 +18,41 @@
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/EventManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/EventManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/Footballer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/Command.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/Command.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/ComponentFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/ComponentFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/DeathMechanism.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/DefaultComponentFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/DefaultScene.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/DeathController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/DeathController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/DefaultMainMenuVisualComponents.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/DefaultMainMenuVisualComponents.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/GUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/GUI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/GUIEndGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/GUIEndGame.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/GUIMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/GUIMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/GUISelectChar$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/GUISelectChar$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/GUISelectChar$2.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/GUISelectChar.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/GUISelectChar.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/ModifyStatusCommand$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/ModifyStatusCommand$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/ModifyStatusCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/ModifyStatusCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/ObservableProgressBar.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/ObservableProgressBar.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/ProgressBarConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/ProgressBarConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/VoiceRecognitionSingleton.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/ProgressBarObserver.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/ProgressBarObserver.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/WarningLabel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/WarningLabel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/Status.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/EventManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/EventManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/ButtonClickActionCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/ModifyStatusCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/ComponentFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/ComponentFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/DeathMechanism.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/DeathController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/DefaultComponentFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/DefaultMainMenuVisualComponents.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/DefaultScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/GUIEndGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/GUIEndGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/GUIMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/GUIMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/GUISelectChar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/GUISelectChar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/UpdateProgressBarCommand.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/VoiceRecognitionSingleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/voicehandler/VoiceRecognitionSingleton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/WarningLabel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/WarningLabel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/Footballer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/FootballerDisplayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/ComponentFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/ComponentFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/DeathController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/DeathController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/DefaultMainMenuVisualComponents.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/DefaultMainMenuVisualComponents.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/GUIEndGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/GUIEndGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/GUIMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/GUIMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/GUISelectChar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/GUISelectChar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/ModifyStatusCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/ModifyStatusCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/ObservableProgressBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/ObservableProgressBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/ProgressBarConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/ProgressBarConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/ProgressBarObserver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/ProgressBarObserver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/GUI/WarningLabel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/WarningLabel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/Status.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +136,7 @@
       <recent name="C:\Users\shrey\OneDrive\Documents\PenaltyMania\SD-Team-2\src\main\java\softwaredesign\images" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.GUISelectChar">
+  <component name="RunManager" selected="Application.EventManager">
     <configuration name="EventManager" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="softwaredesign.EventManager" />
       <module name="software-design-vu-2020.main" />
@@ -138,7 +151,7 @@
       </method>
     </configuration>
     <configuration name="GUIEndGame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="softwaredesign.GUI.GUIEndGame" />
+      <option name="MAIN_CLASS_NAME" value="softwaredesign.gui.GUIEndGame" />
       <module name="software-design-vu-2020.main" />
       <extension name="coverage">
         <pattern>
@@ -151,7 +164,7 @@
       </method>
     </configuration>
     <configuration name="GUIMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="softwaredesign.GUI.GUIMain" />
+      <option name="MAIN_CLASS_NAME" value="softwaredesign.gui.GUIMain" />
       <module name="software-design-vu-2020.main" />
       <extension name="coverage">
         <pattern>
@@ -164,7 +177,7 @@
       </method>
     </configuration>
     <configuration name="GUISelectChar" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="softwaredesign.GUI.GUISelectChar" />
+      <option name="MAIN_CLASS_NAME" value="softwaredesign.gui.GUISelectChar" />
       <module name="software-design-vu-2020.main" />
       <extension name="coverage">
         <pattern>
@@ -222,7 +235,8 @@
       <workItem from="1680163573380" duration="6994000" />
       <workItem from="1680180462833" duration="62000" />
       <workItem from="1680206903844" duration="11181000" />
-      <workItem from="1680245370885" duration="19388000" />
+      <workItem from="1680245370885" duration="27982000" />
+      <workItem from="1680287028961" duration="6353000" />
     </task>
     <task id="LOCAL-00001" summary="Basics of Main GUI done">
       <created>1676915085676</created>
@@ -315,7 +329,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680261292855</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="In process of finalizing">
+      <created>1680273750419</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1680273750419</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -365,6 +386,7 @@
     <MESSAGE value="Finalizing" />
     <MESSAGE value="StartGame linked up" />
     <MESSAGE value="Slowly decoupling commands" />
-    <option name="LAST_COMMIT_MESSAGE" value="Slowly decoupling commands" />
+    <MESSAGE value="In process of finalizing" />
+    <option name="LAST_COMMIT_MESSAGE" value="In process of finalizing" />
   </component>
 </project>

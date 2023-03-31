@@ -1,39 +1,27 @@
 package softwaredesign;
 
+import softwaredesign.gui.GUIEndGame;
+import softwaredesign.gui.GUIMain;
+import softwaredesign.gui.GUISelectChar;
+import softwaredesign.gui.OnGuiClosedCallback;
+
+import java.io.IOException;
+
 public class EventManager {
 
-    private static void startGame(){
+    public static void main(String[] args) throws IOException {
 
-        /*
-        GUISelectChar.runGUI(() -> {
-            JFrame mainFrame = GUIMain.runGUI();
-            GUIMain.setupVoiceRecognition(mainFrame);
-        });
+        FootballerDisplayer footballerDisplayer = new FootballerDisplayer();
 
-         */
+        OnGuiClosedCallback endGameGUIClosed = () -> System.exit(0);
+        GUIEndGame guiEndGame = new GUIEndGame(endGameGUIClosed);
 
-    }
+        OnGuiClosedCallback mainMenuGUIClosed = guiEndGame::startGUI;
+        GUIMain guiMain = new GUIMain(mainMenuGUIClosed, footballerDisplayer);
 
-    private void deathController(){
-        // GUI stuff?
-    }
-
-    private int[] getStats(){
-        return Footballer.playerStatus.values().stream().mapToInt(Integer::intValue).toArray();
-    }
-
-    private void decreaseStats(){
-        for(Status stat : Status.values()){
-            if(Footballer.playerStatus.get(stat) > 0){
-                Footballer.playerStatus.put(stat, Footballer.playerStatus.get(stat) - 1);
-            }
-        }
-    }
-
-    public static void main (String[] args){
-
-        startGame();
-
+        OnGuiClosedCallback selectCharGUIClosed = guiMain::startGUI;
+        GUISelectChar guiSelectChar = new GUISelectChar(footballerDisplayer, selectCharGUIClosed);
+        guiSelectChar.startGUI();
 
     }
 

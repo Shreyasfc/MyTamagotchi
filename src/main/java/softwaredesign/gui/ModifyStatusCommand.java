@@ -1,4 +1,4 @@
-package softwaredesign.GUI;
+package softwaredesign.gui;
 
 import javax.swing.*;
 import java.awt.*;
@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ModifyStatusCommand implements Command {
+
     private final JFrame frame;
     private final String progressBarToUpdate;
     private final String animationImagePath;
@@ -68,8 +69,8 @@ public class ModifyStatusCommand implements Command {
         Timer timer = new Timer(50, null);
         timer.addActionListener(new ActionListener() {
             int count = 0;
-            int maxCount = 8;
             int yPosition = 30;
+            int maxCount = 8;
 
             public void actionPerformed(ActionEvent e) {
                 count++;

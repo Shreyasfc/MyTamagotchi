@@ -1,6 +1,7 @@
-package softwaredesign.GUI;
+package softwaredesign.gui;
 
 import javax.swing.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,17 +18,19 @@ public class ObservableProgressBar extends JProgressBar {
         observers.add(observer);
     }
 
-    public void removeObserver(ProgressBarObserver observer) {
-        observers.remove(observer);
-    }
-
     @Override
     public void setValue(int n) {
+
         super.setValue(n);
-        notifyObservers();
+        try {
+            notifyObservers();
+        } catch (IOException e) {
+            throw new GuiCloseException("Failed to close GUI", e);
+        }
+
     }
 
-    private void notifyObservers() {
+    private void notifyObservers() throws IOException {
         for (ProgressBarObserver observer : observers) {
             observer.update(getValue());
         }

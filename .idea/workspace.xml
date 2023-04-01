@@ -5,16 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61095b6c-b5ee-41b2-903e-a4094582981e" name="Changes" comment="Finished linking up GUI to EventManager">
-      <change afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/images/fieldminigame.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/images/messiminigame.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/images/ronaldominigame.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/images/soccerballminigame.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/minigame/Ball.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/minigame/GamePanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/minigame/KeyInput.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/minigame/MiniGameMain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/minigame/Players.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/minigame/ballMovement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.8.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.8.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.8.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -24,14 +14,15 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/DeathController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/DeathController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/EventManager.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/GUIMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/GUIMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/ModifyStatusCommand$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/ModifyStatusCommand$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/ModifyStatusCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/ModifyStatusCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/minigame/Ball.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/minigame/Ball.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/minigame/MiniGameMain$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/minigame/MiniGameMain$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/minigame/MiniGameMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/minigame/MiniGameMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/minigame/Players.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/minigame/Players.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/FootballerDisplayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/FootballerDisplayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/DeathController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/DeathController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/GUIMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/GUIMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/EventManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/minigame/Players.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/minigame/Players.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,20 +110,7 @@
       <recent name="C:\Users\shrey\OneDrive\Documents\PenaltyMania\SD-Team-2\src\main\java\softwaredesign" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.EventManager">
-    <configuration name="EventManager" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="softwaredesign.EventManager" />
-      <module name="software-design-vu-2020.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="softwaredesign.voicehandler.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.Main">
     <configuration name="GUIEndGame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="softwaredesign.gui.GUIEndGame" />
       <module name="software-design-vu-2020.main" />
@@ -172,6 +150,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="softwaredesign.Main" />
+      <module name="software-design-vu-2020.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="softwaredesign.voicehandler.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MiniGameMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="softwaredesign.minigame.MiniGameMain" />
       <module name="software-design-vu-2020.main" />
@@ -188,7 +179,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.MiniGameMain" />
-        <item itemvalue="Application.EventManager" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.GUIEndGame" />
         <item itemvalue="Application.GUISelectChar" />
         <item itemvalue="Application.GUIMain" />
@@ -220,7 +211,8 @@
       <workItem from="1680206903844" duration="11181000" />
       <workItem from="1680245370885" duration="27982000" />
       <workItem from="1680287028961" duration="14761000" />
-      <workItem from="1680301853468" duration="4516000" />
+      <workItem from="1680301853468" duration="4651000" />
+      <workItem from="1680307511205" duration="296000" />
     </task>
     <task id="LOCAL-00001" summary="Basics of Main GUI done">
       <created>1676915085676</created>
@@ -327,7 +319,21 @@
       <option name="project" value="LOCAL" />
       <updated>1680293453356</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Finished linking up GUI to EventManager">
+      <created>1680306480356</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1680306480356</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Finished linking up GUI to EventManager">
+      <created>1680306496169</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1680306496169</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

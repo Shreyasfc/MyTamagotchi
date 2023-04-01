@@ -6,9 +6,7 @@ import softwaredesign.gui.GUISelectChar;
 import softwaredesign.gui.OnGuiClosedCallback;
 
 import java.io.IOException;
-
-public class EventManager {
-
+public class Main {
     public static void main(String[] args) throws IOException {
 
         FootballerDisplayer footballerDisplayer = new FootballerDisplayer();

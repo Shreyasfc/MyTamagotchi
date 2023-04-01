@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61095b6c-b5ee-41b2-903e-a4094582981e" name="Changes" comment="Finished linking up GUI to EventManager">
+      <change afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/diagram.uml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.8.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.8.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.8.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -12,16 +13,24 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.8.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.8.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/EventManager.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/GUIMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/GUIMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/minigame/Ball.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/minigame/Ball.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/minigame/MiniGameMain$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/minigame/MiniGameMain$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/minigame/MiniGameMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/minigame/MiniGameMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/minigame/GamePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/minigame/GamePanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/minigame/MiniGameMain$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/minigame/MiniGameMain.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/minigame/Players.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/minigame/Players.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/EventManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/GUIMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/GUIMainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/GUISelectChar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/GUISelectChar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/GuiCloseException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/GuiCloseException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/minigame/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/minigame/Ball.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/minigame/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/minigame/GamePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/minigame/KeyInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/minigame/KeyInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/minigame/MiniGameMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/minigame/MiniGameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/minigame/Players.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/minigame/Players.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -69,7 +78,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="GUI" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -97,10 +106,11 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/shrey/OneDrive/Documents/PenaltyMania/SD-Team-2/src/main/java/softwaredesign/gui&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.uml&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -124,8 +134,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GUIMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="softwaredesign.gui.GUIMain" />
+    <configuration name="GUIMainMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="softwaredesign.gui.GUIMainMenu" />
       <module name="software-design-vu-2020.main" />
       <extension name="coverage">
         <pattern>
@@ -163,12 +173,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MiniGameMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="softwaredesign.minigame.MiniGameMain" />
+    <configuration name="MiniGameController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="softwaredesign.minigame.MiniGameController" />
       <module name="software-design-vu-2020.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="softwaredesign.minigame.*" />
+          <option name="PATTERN" value="softwaredesign.minigame.MiniGameController" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -178,11 +188,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MiniGameMain" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.MiniGameController" />
         <item itemvalue="Application.GUIEndGame" />
         <item itemvalue="Application.GUISelectChar" />
-        <item itemvalue="Application.GUIMain" />
+        <item itemvalue="Application.GUIMainMenu" />
       </list>
     </recent_temporary>
   </component>
@@ -213,6 +223,7 @@
       <workItem from="1680287028961" duration="14761000" />
       <workItem from="1680301853468" duration="4651000" />
       <workItem from="1680307511205" duration="296000" />
+      <workItem from="1680340334690" duration="2493000" />
     </task>
     <task id="LOCAL-00001" summary="Basics of Main GUI done">
       <created>1676915085676</created>
@@ -387,5 +398,9 @@
     <MESSAGE value="In process of finalizing" />
     <MESSAGE value="Finished linking up GUI to EventManager" />
     <option name="LAST_COMMIT_MESSAGE" value="Finished linking up GUI to EventManager" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

@@ -30,12 +30,12 @@ public class GUISelectChar implements GUI {
     @Override
     public void customizeGUI(JFrame frame) {
 
-        createImageCarousel(frame);
+        addImageCarousel(frame);
         addTextAboveCarousel(frame);
 
     }
 
-    private void createImageCarousel(JFrame frame) {
+    private void addImageCarousel(JFrame frame) {
 
         JPanel imagePanel = new JPanel(new BorderLayout());
         imagePanel.setBounds(75, 75, 350, 350);
@@ -43,7 +43,7 @@ public class GUISelectChar implements GUI {
 
         JLabel imageLabel = new JLabel();
         imagePanel.add(imageLabel, BorderLayout.CENTER);
-        setImage(imageLabel, currentImageIndex);
+        showSelectableFootballerModel(imageLabel, currentImageIndex);
 
         imageLabel.addMouseListener(new MouseAdapter() {
             @Override
@@ -60,31 +60,31 @@ public class GUISelectChar implements GUI {
 
         });
 
-        JButton leftButton = createLeftButton(imageLabel);
+        JButton leftButton = addLeftButton(imageLabel);
         imagePanel.add(leftButton, BorderLayout.WEST);
 
-        JButton rightButton = createRightButton(imageLabel);
+        JButton rightButton = addRightButton(imageLabel);
         imagePanel.add(rightButton, BorderLayout.EAST);
 
     }
 
-    private JButton createLeftButton(JLabel imageLabel) {
+    private JButton addLeftButton(JLabel imageLabel) {
 
         JButton leftButton = new JButton("<");
         leftButton.addActionListener(e -> {
             currentImageIndex = (currentImageIndex - 1 + footballerImages.length) % footballerImages.length;
-            setImage(imageLabel, currentImageIndex);
+            showSelectableFootballerModel(imageLabel, currentImageIndex);
         });
         return leftButton;
 
     }
 
-    private JButton createRightButton(JLabel imageLabel) {
+    private JButton addRightButton(JLabel imageLabel) {
 
         JButton rightButton = new JButton(">");
         rightButton.addActionListener(e -> {
             currentImageIndex = (currentImageIndex + 1) % footballerImages.length;
-            setImage(imageLabel, currentImageIndex);
+            showSelectableFootballerModel(imageLabel, currentImageIndex);
         });
         return rightButton;
 
@@ -97,7 +97,7 @@ public class GUISelectChar implements GUI {
 
     }
 
-    private void setImage(JLabel imageLabel, int index) {
+    private void showSelectableFootballerModel(JLabel imageLabel, int index) {
 
         try {
             Image image = ImageIO.read(new File(footballerImages[index]));

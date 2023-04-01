@@ -1,7 +1,7 @@
 package softwaredesign;
 
 import softwaredesign.gui.GUIEndGame;
-import softwaredesign.gui.GUIMain;
+import softwaredesign.gui.GUIMainMenu;
 import softwaredesign.gui.GUISelectChar;
 import softwaredesign.gui.OnGuiClosedCallback;
 
@@ -15,9 +15,9 @@ public class Main {
         GUIEndGame guiEndGame = new GUIEndGame(endGameGUIClosed);
 
         OnGuiClosedCallback mainMenuGUIClosed = guiEndGame::startGUI;
-        GUIMain guiMain = new GUIMain(mainMenuGUIClosed, footballerDisplayer);
+        GUIMainMenu guiMainMenu = new GUIMainMenu(mainMenuGUIClosed, footballerDisplayer);
 
-        OnGuiClosedCallback selectCharGUIClosed = guiMain::startGUI;
+        OnGuiClosedCallback selectCharGUIClosed = guiMainMenu::startGUI;
         GUISelectChar guiSelectChar = new GUISelectChar(footballerDisplayer, selectCharGUIClosed);
         guiSelectChar.startGUI();
 

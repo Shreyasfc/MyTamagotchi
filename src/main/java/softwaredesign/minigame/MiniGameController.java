@@ -7,13 +7,13 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
 
-public class MiniGameMain {
+public class MiniGameController {
 
 	private final JFrame frame = new JFrame();
 
 	private final OnGuiClosedCallback onGuiClosedCallback;
 
-	public MiniGameMain(OnGuiClosedCallback onGuiClosedCallback) {
+	public MiniGameController(OnGuiClosedCallback onGuiClosedCallback) {
 		this.onGuiClosedCallback = onGuiClosedCallback;
 	}
 
@@ -22,7 +22,7 @@ public class MiniGameMain {
 		KeyInput mainPanel = new KeyInput(players);
 		frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		frame.getContentPane().add(mainPanel);
-		frame.setSize(GamePanel.SCREE_WIDTH,GamePanel.SCREEN_HEIGHT);
+		frame.setSize(GamePanel.SCREEN_WIDTH,GamePanel.SCREEN_HEIGHT);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 		frame.setResizable(false);

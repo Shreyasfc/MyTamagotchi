@@ -7,7 +7,7 @@ import java.awt.event.KeyEvent;
 public class KeyInput extends JPanel {
     private final Players p;
     public KeyInput(Players players) {
-        add(new JButton("Foo")); // for consistency
+        add(new JButton("Foo")); // For consistency
         KeyLis listener = new KeyLis();
         this.setFocusable(true);
         this.requestFocus();

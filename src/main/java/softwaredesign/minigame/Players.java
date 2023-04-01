@@ -4,20 +4,18 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-@SuppressWarnings("serial")
 public class Players extends JPanel{
 
 	private static final int PLAYER_WIDTH = 100;
 	private static final int PLAYER_HEIGHT = 100;
 
 	private final transient Image backgroundImage = new ImageIcon("src/main/java/softwaredesign/images/fieldminigame.png").getImage();
-
 	private final transient Image playerOneImage = new ImageIcon("src/main/java/softwaredesign/images/messiminigame.png").getImage();
-
 	private final transient Image playerTwoImage = new ImageIcon("src/main/java/softwaredesign/images/ronaldominigame.png").getImage();
+
 	private int playerOneX = 1;
 	private int playerOneY = GamePanel.SCREEN_HEIGHT / 2;
-	private int playerTwoX = GamePanel.SCREE_WIDTH - PLAYER_WIDTH - 1;
+	private int playerTwoX = GamePanel.SCREEN_WIDTH - PLAYER_WIDTH - 1;
 	private int playerTwoY = GamePanel.SCREEN_HEIGHT / 2;
 	private int deltaXPlayerOne = 0;
 	private int deltaXPlayerTwo = 0;
@@ -112,13 +110,13 @@ public class Players extends JPanel{
 		}
 
 		// hit left or right wall
-		if(playerOneX + PLAYER_WIDTH >= GamePanel.SCREE_WIDTH){
+		if(playerOneX + PLAYER_WIDTH >= GamePanel.SCREEN_WIDTH){
 			deltaYPlayerOne = -1;
 		}else if(playerOneX <= 0){
 			deltaYPlayerOne = 1;
 		}
 
-		if(playerTwoX + PLAYER_WIDTH >= GamePanel.SCREE_WIDTH){
+		if(playerTwoX + PLAYER_WIDTH >= GamePanel.SCREEN_WIDTH){
 			deltaYPlayerTwo = -1;
 		}else if(playerTwoX <= 0){
 			deltaYPlayerTwo = 1;

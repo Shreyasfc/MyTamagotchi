@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class GamePanel extends JPanel{
 
-	static final int SCREE_WIDTH = 1000;
+	static final int SCREEN_WIDTH = 1000;
 	static final int SCREEN_HEIGHT = 752;
 
 	private final Players players;

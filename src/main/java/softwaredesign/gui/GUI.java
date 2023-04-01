@@ -8,8 +8,6 @@ import java.io.IOException;
 
 interface GUI {
 
-    void customizeGUI(JFrame frame);
-
     default void startGUI() throws IOException {
 
         JFrame frame = createWindow();
@@ -21,6 +19,8 @@ interface GUI {
         frame.setVisible(true);
 
     }
+
+    void customizeGUI(JFrame frame);
 
     private JFrame createWindow() {
         JFrame frame = new JFrame("Tamagotchi");

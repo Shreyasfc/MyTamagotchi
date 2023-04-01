@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="514.3221069779588" y="88.89410892960643">softwaredesign.gui.GUISelectChar</node>
+    <node x="854.4200792545607" y="-117.54956531824243">softwaredesign.gui.GUIMain</node>
+    <node x="173.2078355240489" y="38.78244187208044">softwaredesign.gui.GUIEndGame</node>
+    <node x="516.3352653680769" y="-113.92032892654672">softwaredesign.gui.GUI</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="softwaredesign.gui.GUIMain" target="softwaredesign.gui.GUI" relationship="REALIZATION">
+      <point x="-207.5" y="-62.87076360830429" />
+      <point x="131.0" y="0.0" />
+    </edge>
+    <edge source="softwaredesign.gui.GUIEndGame" target="softwaredesign.gui.GUI" relationship="REALIZATION">
+      <point x="0.0" y="-60.5" />
+      <point x="313.2078355240489" y="-53.920328926546716" />
+      <point x="-131.0" y="0.0" />
+    </edge>
+    <edge source="softwaredesign.gui.GUISelectChar" target="softwaredesign.gui.GUI" relationship="REALIZATION">
+      <point x="-6.986841609881935" y="-137.5" />
+      <point x="0.0" y="60.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="1.0" showDependencies="false" x="699.5" y="126.5" />
+  <SelectedNodes>
+    <node>softwaredesign.gui.GUIMain</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

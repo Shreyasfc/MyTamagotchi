@@ -3,7 +3,7 @@ package softwaredesign.gui;
 import edu.cmu.sphinx.api.Configuration;
 import edu.cmu.sphinx.api.LiveSpeechRecognizer;
 import softwaredesign.FootballerDisplayer;
-import softwaredesign.minigame.MiniGameMain;
+import softwaredesign.minigame.MiniGameController;
 import softwaredesign.voicehandler.VoiceRecognitionSingleton;
 
 import javax.swing.*;
@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 
 import static softwaredesign.voicehandler.VoiceRecognitionHelper.*;
 
-public class GUIMain implements GUI {
+public class GUIMainMenu implements GUI {
 
     private final AtomicBoolean stopSignal = new AtomicBoolean(false);
 
@@ -28,13 +28,15 @@ public class GUIMain implements GUI {
 
     private final FootballerDisplayer footballerDisplayer;
 
-    public GUIMain(OnGuiClosedCallback onGuiClosedCallback, FootballerDisplayer footballerDisplayer) {
+    public GUIMainMenu(OnGuiClosedCallback onGuiClosedCallback, FootballerDisplayer footballerDisplayer) {
         this.onGuiClosedCallback = onGuiClosedCallback;
         this.footballerDisplayer = footballerDisplayer;
     }
 
     @Override
     public void customizeGUI(JFrame frame) {
+
+        ComponentFactory factory = new DefaultMainMenuVisualComponents();
 
         displayModel(frame);
 
@@ -46,32 +48,35 @@ public class GUIMain implements GUI {
                 new ProgressBarConfig(50, "Mood", 170, new Color(86, 0, 66), new Color(255, 234, 253), 10, false),
         };
 
-        ComponentFactory factory = new DefaultMainMenuVisualComponents();
         for (ProgressBarConfig config : statusProgressBarsConfigs) {
+
             ObservableProgressBar progressBar = (ObservableProgressBar) factory.createProgressBar(config.value, config.text, config.y, config.fg, config.bg, config.criticalValue, config.isValIncreasing);
             frame.add(progressBar);
+
             autoIncrementOrDecrementProgressBar(progressBar);
+
             DeathController deathController = new DeathController(progressBar.isValIncreasing(), frame, stopSignal);
             progressBar.addObserver(deathController);
+
             WarningLabel warningLabel = new WarningLabel(config.text, config.criticalValue, config.isValIncreasing, progressBar);
             progressBar.addObserver(warningLabel);
             frame.add(warningLabel);
+
         }
 
         addButton(frame, "Feed", 10, new ModifyStatusCommand(frame, "Hunger", "src/main/java/softwaredesign/images/chicken.png", -10), factory);
         addButton(frame, "Shower", 50, new ModifyStatusCommand(frame, "Hygiene", "src/main/java/softwaredesign/images/waterdroplet.png", 10), factory);
         addButton(frame, "Pee", 90, new ModifyStatusCommand(frame, "Bladder", "src/main/java/softwaredesign/images/toilet.png", -10), factory);
         addButton(frame, "Drink", 130, new ModifyStatusCommand(frame, "Thirst", "src/main/java/softwaredesign/images/bottle.png", -10), factory);
-
         addButton(frame, "Minigame", 170, () -> {
             minigameActive.set(!minigameActive.get());
             OnGuiClosedCallback miniGameExit = () -> minigameActive.set(!minigameActive.get());
-            MiniGameMain miniGameMain = new MiniGameMain(miniGameExit);
-            miniGameMain.initGame();
+            MiniGameController miniGameController = new MiniGameController(miniGameExit);
+            miniGameController.initGame();
             new ModifyStatusCommand(frame, "Mood", "src/main/java/softwaredesign/images/chicken.png", 30).execute();
         }, factory);
 
-        setupVoiceRecognition(frame);
+        addVoiceRecognition(frame);
         addVoiceCommandLabels(frame);
 
     }
@@ -122,25 +127,8 @@ public class GUIMain implements GUI {
 
     }
 
-    private void addVoiceCommandLabels(JFrame frame) {
-        JLabel voiceCommandLabel = new JLabel("Your voice command: ");
-        voiceCommandLabel.setName("voiceCommandLabel");
-        voiceCommandLabel.setBounds(10, 210, 200, 30);
-        voiceCommandLabel.setForeground(Color.BLACK); // Set the text color to black
-        voiceCommandLabel.setBackground(Color.WHITE); // Set the background color to white
-        voiceCommandLabel.setOpaque(true); // Make the background visible
-        frame.add(voiceCommandLabel);
-
-        JLabel warningLabel = new JLabel("*Voice command may take a few minutes to load");
-        warningLabel.setName("warningLabel");
-        warningLabel.setBounds(10, 240, 200, 30);
-        warningLabel.setForeground(Color.RED); // Set the text color to red
-        warningLabel.setFont(new Font("Arial", Font.PLAIN, 8));
-        frame.add(warningLabel);
-    }
-
     //Note: This is the bonus implementation
-    private void setupVoiceRecognition(JFrame mainFrame) {
+    private void addVoiceRecognition(JFrame mainFrame) {
 
         // This mini-segment aims to block the annoying logger messages
         Logger cmRootLogger = Logger.getLogger("default.config");
@@ -178,6 +166,25 @@ public class GUIMain implements GUI {
                 }
             }
         }, 0, 500, TimeUnit.MILLISECONDS);
+    }
+
+    private void addVoiceCommandLabels(JFrame frame) {
+
+        JLabel voiceCommandLabel = new JLabel("Your voice command: ");
+        voiceCommandLabel.setName("voiceCommandLabel");
+        voiceCommandLabel.setBounds(10, 210, 200, 30);
+        voiceCommandLabel.setForeground(Color.BLACK); // Set the text color to black
+        voiceCommandLabel.setBackground(Color.WHITE); // Set the background color to white
+        voiceCommandLabel.setOpaque(true); // Make the background visible
+        frame.add(voiceCommandLabel);
+
+        JLabel warningLabel = new JLabel("*Voice command may take a few minutes to load");
+        warningLabel.setName("warningLabel");
+        warningLabel.setBounds(10, 240, 200, 30);
+        warningLabel.setForeground(Color.RED); // Set the text color to red
+        warningLabel.setFont(new Font("Arial", Font.PLAIN, 8));
+        frame.add(warningLabel);
+
     }
 
 }

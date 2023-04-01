@@ -7,10 +7,12 @@
     <list default="true" id="61095b6c-b5ee-41b2-903e-a4094582981e" name="Changes" comment="Everything linked up">
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/ComponentFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/GUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/GUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/GUISelectChar$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/GUISelectChar$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/GUISelectChar.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/GUISelectChar.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/GUIMainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/GUIMainMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/GUISelectChar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/GUISelectChar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/MainMenuDefaultComponentsProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/MainMenuDefaultComponentsProducer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -204,7 +206,7 @@
       <workItem from="1680307511205" duration="296000" />
       <workItem from="1680340334690" duration="2493000" />
       <workItem from="1680342933995" duration="13087000" />
-      <workItem from="1680357516010" duration="4523000" />
+      <workItem from="1680357516010" duration="5549000" />
     </task>
     <task id="LOCAL-00001" summary="Basics of Main GUI done">
       <created>1676915085676</created>
@@ -353,7 +355,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680364881648</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Everything linked up">
+      <created>1680365428198</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1680365428198</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

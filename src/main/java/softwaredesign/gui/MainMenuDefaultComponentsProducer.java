@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class MainMenuDefaultComponentsProducer {
 
-    public JProgressBar createProgressBar(int startVal, String label, int yPos, Color fg, Color bg, boolean isValIncreasing) {
+    public ObservableProgressBar createProgressBar(int startVal, String label, int yPos, Color fg, Color bg, boolean isValIncreasing) {
         ObservableProgressBar progressBar = new ObservableProgressBar(0, 100, isValIncreasing);
 
         progressBar.setValue(startVal);

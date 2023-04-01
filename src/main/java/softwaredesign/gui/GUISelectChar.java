@@ -24,7 +24,6 @@ public class GUISelectChar implements GUI {
 
     private int currentImageIndex = 0;
 
-
     @Override
     public void customizeGUI(JFrame frame) {
 

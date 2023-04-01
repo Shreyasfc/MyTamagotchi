@@ -49,7 +49,7 @@ public class GUIMainMenu implements GUI {
 
         for (StatusProgressBarConfigs config : statusProgressBarsConfigs) {
 
-            ObservableProgressBar progressBar = (ObservableProgressBar) mainMenuDefaultComponentsProducer.createProgressBar(config.startVal, config.label, config.yPos, config.fg, config.bg, config.isValIncreasing);
+            ObservableProgressBar progressBar = mainMenuDefaultComponentsProducer.createProgressBar(config.startVal, config.label, config.yPos, config.fg, config.bg, config.isValIncreasing);
             frame.add(progressBar);
 
             autoIncrementOrDecrementProgressBar(progressBar);

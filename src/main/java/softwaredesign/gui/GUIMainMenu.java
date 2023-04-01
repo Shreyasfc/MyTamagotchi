@@ -40,15 +40,15 @@ public class GUIMainMenu implements GUI {
 
         displayModel(frame);
 
-        ProgressBarConfig[] statusProgressBarsConfigs = {
-                new ProgressBarConfig(50, "Hunger", 10, new Color(128, 0, 0), new Color(255, 182, 193), 90, true),
-                new ProgressBarConfig(50, "Hygiene", 50, new Color(0, 11, 255), new Color(204, 222, 255), 10, false),
-                new ProgressBarConfig(50, "Bladder", 90, new Color(96, 77, 0), new Color(236, 224, 181), 90, true),
-                new ProgressBarConfig(50, "Thirst", 130, new Color(6, 58, 0), new Color(225, 250, 225), 90, true),
-                new ProgressBarConfig(50, "Mood", 170, new Color(86, 0, 66), new Color(255, 234, 253), 10, false),
+        StatusProgressBarConfigs[] statusProgressBarsConfigs = {
+                new StatusProgressBarConfigs(50, "Hunger", 10, new Color(128, 0, 0), new Color(255, 182, 193), 90, true),
+                new StatusProgressBarConfigs(50, "Hygiene", 50, new Color(0, 11, 255), new Color(204, 222, 255), 10, false),
+                new StatusProgressBarConfigs(50, "Bladder", 90, new Color(96, 77, 0), new Color(236, 224, 181), 90, true),
+                new StatusProgressBarConfigs(50, "Thirst", 130, new Color(6, 58, 0), new Color(225, 250, 225), 90, true),
+                new StatusProgressBarConfigs(50, "Mood", 170, new Color(86, 0, 66), new Color(255, 234, 253), 10, false),
         };
 
-        for (ProgressBarConfig config : statusProgressBarsConfigs) {
+        for (StatusProgressBarConfigs config : statusProgressBarsConfigs) {
 
             ObservableProgressBar progressBar = (ObservableProgressBar) factory.createProgressBar(config.value, config.text, config.y, config.fg, config.bg, config.criticalValue, config.isValIncreasing);
             frame.add(progressBar);

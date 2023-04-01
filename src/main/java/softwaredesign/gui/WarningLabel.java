@@ -21,4 +21,5 @@ class WarningLabel extends JLabel implements ProgressBarObserver {
     public void update(int newValue) {
         setVisible((isValIncreasing && newValue >= criticalValue) || (!isValIncreasing && newValue <= criticalValue));
     }
+
 }

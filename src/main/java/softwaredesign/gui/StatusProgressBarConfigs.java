@@ -2,7 +2,7 @@ package softwaredesign.gui;
 
 import java.awt.*;
 
-class ProgressBarConfig {
+class StatusProgressBarConfigs {
 
     int value;
     String text;
@@ -12,7 +12,7 @@ class ProgressBarConfig {
     int criticalValue;
     boolean isValIncreasing;
 
-    public ProgressBarConfig(int value, String text, int y, Color fg, Color bg, int criticalValue, boolean isValIncreasing) {
+    public StatusProgressBarConfigs(int value, String text, int y, Color fg, Color bg, int criticalValue, boolean isValIncreasing) {
         this.value = value;
         this.text = text;
         this.y = y;

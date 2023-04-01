@@ -11,12 +11,12 @@ public class FootballerDisplayer {
 
     private FootballerName chosenFootballer;
 
-    private static final Map<FootballerName, String> footballerModelImagePath = Map.of(
+    private static final Map<FootballerName, String> FOOTBALLER_MODEL_IMAGE_PATH = Map.of(
             C_RONALDO, "src/main/java/softwaredesign/images/cristianobasic.png",
             L_MESSI, "src/main/java/softwaredesign/images/messibasic.png"
     );
 
-    private static final Map<FootballerName, String> footballerMiniGameImagePath = Map.of(
+    private static final Map<FootballerName, String> FOOTBALLER_MINI_GAME_IMAGE_PATH = Map.of(
             C_RONALDO, "src/main/java/softwaredesign/images/ronaldominigame.png",
             L_MESSI, "src/main/java/softwaredesign/images/messiminigame.png"
     );
@@ -35,25 +35,25 @@ public class FootballerDisplayer {
 
     public String[] getAllFootballerModelsImagePath() {
         return Arrays.stream(FootballerName.values())
-                .map(footballerModelImagePath::get)
+                .map(FOOTBALLER_MODEL_IMAGE_PATH::get)
                 .toArray(String[]::new);
     }
 
     public String getOneFootballerModelImagePath(FootballerName chosenFootballer){
 
-        return footballerModelImagePath.get(chosenFootballer);
+        return FOOTBALLER_MODEL_IMAGE_PATH.get(chosenFootballer);
 
     }
 
     public String getOneFootballerMiniGameImagePath(FootballerName chosenFootballer){
 
-        return footballerMiniGameImagePath.get(chosenFootballer);
+        return FOOTBALLER_MINI_GAME_IMAGE_PATH.get(chosenFootballer);
 
     }
 
     public FootballerName getOneFootballerName(String imagePath) {
 
-        Optional<FootballerName> optionalFootballerName = footballerModelImagePath.entrySet().stream()
+        Optional<FootballerName> optionalFootballerName = FOOTBALLER_MODEL_IMAGE_PATH.entrySet().stream()
                 .filter(entry -> entry.getValue().equals(imagePath))
                 .map(Map.Entry::getKey)
                 .findFirst();

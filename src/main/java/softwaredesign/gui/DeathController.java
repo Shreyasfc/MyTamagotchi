@@ -3,7 +3,7 @@ package softwaredesign.gui;
 import javax.swing.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class DeathController extends JLabel implements ProgressBarObserver {
+public class DeathController implements ProgressBarObserver {
 
     private final AtomicBoolean stopSignal;
     private final boolean isValIncreasing;
@@ -15,7 +15,7 @@ public class DeathController extends JLabel implements ProgressBarObserver {
         this.stopSignal = stopSignal;
     }
 
-    private void endGame() {
+    private void closeCurrentGUI() {
         frame.dispose();
         stopSignal.compareAndSet(false, true);
     }
@@ -23,11 +23,12 @@ public class DeathController extends JLabel implements ProgressBarObserver {
     @Override
     public void update(int newValue) {
         if (isValIncreasing && newValue >= 100) {
-            endGame();
+            closeCurrentGUI();
         }
 
         if (!isValIncreasing && newValue <= 0) {
-            endGame();
+            closeCurrentGUI();
         }
     }
+
 }

@@ -21,14 +21,10 @@ _
 /src/main/java/softwaredesign/minigame/Ball.java,9\d\9d9b5157f1c97161e76da4eeaf5ec60e83b7c947
 d
 4src/main/java/softwaredesign/minigame/GamePanel.java,0\a\0ad51166742c52c106ee70fe0df870ed68c4cb50
-Y
-)src/main/java/softwaredesign/gui/GUI.java,6\f\6fbfdb6c37a8fc0ffbe740d53497014150e0dfdc
 c
 3src/main/java/softwaredesign/minigame/KeyInput.java,3\d\3d94567664dc0c9622e257fa0b903b60621a3b0e
 m
 =src/main/java/softwaredesign/minigame/MiniGameController.java,8\6\86da1d1a723cf24d9dbbd8dc5e2adb1de21b1706
-b
-2src/main/java/softwaredesign/minigame/Players.java,f\4\f41e49d0b956490af062b7a9106e497b82ef1ccc
 i
 9src/main/java/softwaredesign/gui/ProgressBarObserver.java,0\6\065ea9b99f35ccefe426ba2904d462e1be140d9f
 `
@@ -47,5 +43,3 @@ k
 ;src/main/java/softwaredesign/gui/ObservableProgressBar.java,0\b\0b028a127090a42ded609305104633f82b578d63
 x
 Hsrc/main/java/softwaredesign/voicehandler/VoiceRecognitionSingleton.java,f\b\fbf9d66bb6676d520afd11081a5a25eba9a88dd3
-V
-&src/main/java/softwaredesign/Main.java,0\0\00d56e2f0935f238b335e591eedadb56057f78c5

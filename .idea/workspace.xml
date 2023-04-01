@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61095b6c-b5ee-41b2-903e-a4094582981e" name="Changes" comment="Everything linked up">
-      <change afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/MiniGameExecuteCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.8.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.8.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.8.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -15,23 +14,11 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/FootballerDisplayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/FootballerDisplayer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/Command.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/Command.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/DeathController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/DeathController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/DefaultMainMenuVisualComponents.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/GUIMainMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/GUIMainMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/ModifyStatusCommand$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/ModifyStatusCommand$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/ModifyStatusCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/ModifyStatusCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/ObservableProgressBar.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/ObservableProgressBar.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/ProgressBarConfig.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/Command.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/ComponentFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/ComponentFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/DefaultMainMenuVisualComponents.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/DefaultMainMenuComponents.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/ComponentFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/DefaultMainMenuComponents.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/MainMenuDefaultComponentsProducer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/GUIMainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/GUIMainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/ModifyStatusCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/ModifyStatusCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/StatusProgressBarConfigs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/gui/StatusProgressBarConfigs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/voicehandler/VoiceRecognitionHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/voicehandler/VoiceRecognitionHelper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,22 +84,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/shrey/OneDrive/Documents/PenaltyMania/SD-Team-2/src/main/java/softwaredesign/gui&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.uml&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/shrey/OneDrive/Documents/PenaltyMania/SD-Team-2/src/main/java/softwaredesign/gui",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.externalDependencies"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\shrey\OneDrive\Documents\PenaltyMania\SD-Team-2\src\main\java\softwaredesign\images" />
@@ -225,6 +212,7 @@
       <workItem from="1680307511205" duration="296000" />
       <workItem from="1680340334690" duration="2493000" />
       <workItem from="1680342933995" duration="13087000" />
+      <workItem from="1680357516010" duration="3796000" />
     </task>
     <task id="LOCAL-00001" summary="Basics of Main GUI done">
       <created>1676915085676</created>
@@ -359,7 +347,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680348934947</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Everything linked up">
+      <created>1680357560825</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1680357560825</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

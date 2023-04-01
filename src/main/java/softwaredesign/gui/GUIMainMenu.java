@@ -35,7 +35,7 @@ public class GUIMainMenu implements GUI {
     @Override
     public void customizeGUI(JFrame frame) {
 
-        ComponentFactory factory = new DefaultMainMenuComponents();
+        MainMenuDefaultComponentsProducer mainMenuDefaultComponentsProducer = new MainMenuDefaultComponentsProducer();
 
         displayModel(frame);
 
@@ -49,7 +49,7 @@ public class GUIMainMenu implements GUI {
 
         for (StatusProgressBarConfigs config : statusProgressBarsConfigs) {
 
-            ObservableProgressBar progressBar = (ObservableProgressBar) factory.createProgressBar(config.startVal, config.label, config.yPos, config.fg, config.bg, config.criticalValue, config.isValIncreasing);
+            ObservableProgressBar progressBar = (ObservableProgressBar) mainMenuDefaultComponentsProducer.createProgressBar(config.startVal, config.label, config.yPos, config.fg, config.bg, config.isValIncreasing);
             frame.add(progressBar);
 
             autoIncrementOrDecrementProgressBar(progressBar);
@@ -63,11 +63,11 @@ public class GUIMainMenu implements GUI {
 
         }
 
-        addButton(frame, "Feed", 10, new ModifyStatusCommand(frame, "Hunger", "src/main/java/softwaredesign/images/chicken.png", -10), factory);
-        addButton(frame, "Shower", 50, new ModifyStatusCommand(frame, "Hygiene", "src/main/java/softwaredesign/images/waterdroplet.png", 10), factory);
-        addButton(frame, "Pee", 90, new ModifyStatusCommand(frame, "Bladder", "src/main/java/softwaredesign/images/toilet.png", -10), factory);
-        addButton(frame, "Drink", 130, new ModifyStatusCommand(frame, "Thirst", "src/main/java/softwaredesign/images/bottle.png", -10), factory);
-        addButton(frame, "Minigame", 170, new MiniGameExecuteCommand(minigameActive, new ModifyStatusCommand(frame, "Mood", "src/main/java/softwaredesign/images/chicken.png", 30)), factory);
+        addButton(frame, "Feed", 10, new ModifyStatusCommand(frame, "Hunger", "src/main/java/softwaredesign/images/chicken.png", -10), mainMenuDefaultComponentsProducer);
+        addButton(frame, "Shower", 50, new ModifyStatusCommand(frame, "Hygiene", "src/main/java/softwaredesign/images/waterdroplet.png", 10), mainMenuDefaultComponentsProducer);
+        addButton(frame, "Pee", 90, new ModifyStatusCommand(frame, "Bladder", "src/main/java/softwaredesign/images/toilet.png", -10), mainMenuDefaultComponentsProducer);
+        addButton(frame, "Drink", 130, new ModifyStatusCommand(frame, "Thirst", "src/main/java/softwaredesign/images/bottle.png", -10), mainMenuDefaultComponentsProducer);
+        addButton(frame, "Minigame", 170, new MiniGameExecuteCommand(minigameActive, new ModifyStatusCommand(frame, "Mood", "src/main/java/softwaredesign/images/chicken.png", 30)), mainMenuDefaultComponentsProducer);
 
         addVoiceRecognition(frame);
         addVoiceCommandLabels(frame);
@@ -112,7 +112,7 @@ public class GUIMainMenu implements GUI {
 
     }
 
-    private void addButton(JFrame frame, String text, int y, Command command, ComponentFactory factory) {
+    private void addButton(JFrame frame, String text, int y, Command command, MainMenuDefaultComponentsProducer factory) {
 
         JButton button = factory.createButton(text, y);
         button.addActionListener(e -> command.execute());

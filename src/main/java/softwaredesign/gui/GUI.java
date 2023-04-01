@@ -1,14 +1,11 @@
 package softwaredesign.gui;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
 
 interface GUI {
 
-    default void startGUI() throws IOException {
+    default void startGUI()  {
 
         JFrame frame = createWindow();
 
@@ -31,8 +28,8 @@ interface GUI {
         return frame;
     }
 
-    private void setContentPaneWithImage(JFrame frame) throws IOException {
-        Image backgroundImage = ImageIO.read(new File("src/main/java/softwaredesign/images/background.png"));
+    private void setContentPaneWithImage(JFrame frame)  {
+        Image backgroundImage = new ImageIcon("src/main/java/softwaredesign/images/background.png").getImage();
         JLabel backgroundLabel = new JLabel(new ImageIcon(backgroundImage));
         backgroundLabel.setBounds(0, 0, backgroundImage.getWidth(null), backgroundImage.getHeight(null));
         frame.setContentPane(backgroundLabel);

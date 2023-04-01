@@ -3,10 +3,9 @@ package softwaredesign.gui;
 import javax.swing.*;
 import java.awt.*;
 
-public class DefaultMainMenuComponents implements ComponentFactory {
+public class MainMenuDefaultComponentsProducer {
 
-    @Override
-    public JProgressBar createProgressBar(int startVal, String label, int yPos, Color fg, Color bg, int criticalValue, boolean isValIncreasing) {
+    public JProgressBar createProgressBar(int startVal, String label, int yPos, Color fg, Color bg, boolean isValIncreasing) {
         ObservableProgressBar progressBar = new ObservableProgressBar(0, 100, isValIncreasing);
 
         progressBar.setValue(startVal);
@@ -21,7 +20,6 @@ public class DefaultMainMenuComponents implements ComponentFactory {
         return progressBar;
     }
 
-    @Override
     public JButton createButton(String text, int yPos) {
         JButton button = new JButton(text);
         button.setBounds(375, yPos, 100, 30);

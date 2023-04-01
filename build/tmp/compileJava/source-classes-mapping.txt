@@ -1,7 +1,7 @@
 softwaredesign/voicehandler/VoiceRecognitionHelper.java
  softwaredesign.voicehandler.VoiceRecognitionHelper
-softwaredesign/EventManager.java
- softwaredesign.EventManager
+softwaredesign/voicehandler/VoiceRecognitionSingleton.java
+ softwaredesign.voicehandler.VoiceRecognitionSingleton
 softwaredesign/gui/DefaultMainMenuVisualComponents.java
  softwaredesign.gui.DefaultMainMenuVisualComponents
 softwaredesign/FootballerName.java
@@ -38,10 +38,6 @@ softwaredesign/gui/GUIEndGame.java
  softwaredesign.gui.GUIEndGame
 softwaredesign/gui/GuiCloseException.java
  softwaredesign.gui.GuiCloseException
-softwaredesign/gui/GUIMain.java
- softwaredesign.gui.GUIMain
-softwaredesign/voicehandler/VoiceRecognitionSingleton.java
- softwaredesign.voicehandler.VoiceRecognitionSingleton
 softwaredesign/minigame/Players.java
  softwaredesign.minigame.Players
 softwaredesign/minigame/KeyInput.java
@@ -49,8 +45,12 @@ softwaredesign/minigame/KeyInput.java
  softwaredesign.minigame.KeyInput$KeyLis
 softwaredesign/minigame/GamePanel.java
  softwaredesign.minigame.GamePanel
+softwaredesign/Main.java
+ softwaredesign.Main
 softwaredesign/minigame/MiniGameMain.java
  softwaredesign.minigame.MiniGameMain
  softwaredesign.minigame.MiniGameMain$1
+softwaredesign/gui/GUIMain.java
+ softwaredesign.gui.GUIMain
 softwaredesign/minigame/Ball.java
  softwaredesign.minigame.Ball

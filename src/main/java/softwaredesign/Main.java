@@ -4,10 +4,8 @@ import softwaredesign.gui.GUIEndGame;
 import softwaredesign.gui.GUIMainMenu;
 import softwaredesign.gui.GUISelectChar;
 import softwaredesign.gui.OnGuiClosedCallback;
-
-import java.io.IOException;
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
         FootballerDisplayer footballerDisplayer = new FootballerDisplayer();
 

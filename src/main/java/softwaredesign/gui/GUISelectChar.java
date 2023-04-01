@@ -2,12 +2,10 @@ package softwaredesign.gui;
 
 import softwaredesign.FootballerDisplayer;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.File;
 import java.io.IOException;
 
 public class GUISelectChar implements GUI {
@@ -99,12 +97,8 @@ public class GUISelectChar implements GUI {
 
     private void showSelectableFootballerModel(JLabel imageLabel, int index) {
 
-        try {
-            Image image = ImageIO.read(new File(footballerImages[index]));
-            imageLabel.setIcon(new ImageIcon(image));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Image image = new ImageIcon(footballerImages[index]).getImage();
+        imageLabel.setIcon(new ImageIcon(image));
 
     }
 

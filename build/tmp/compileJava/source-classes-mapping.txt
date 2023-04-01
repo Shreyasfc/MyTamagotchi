@@ -28,8 +28,8 @@ softwaredesign/gui/ObservableProgressBar.java
 softwaredesign/minigame/MiniGameController.java
  softwaredesign.minigame.MiniGameController
  softwaredesign.minigame.MiniGameController$1
-softwaredesign/Main.java
- softwaredesign.Main
+softwaredesign/gui/GUI.java
+ softwaredesign.gui.GUI
 softwaredesign/minigame/Players.java
  softwaredesign.minigame.Players
 softwaredesign/minigame/KeyInput.java
@@ -52,5 +52,5 @@ softwaredesign/gui/GUIMainMenu.java
 softwaredesign/gui/GUISelectChar.java
  softwaredesign.gui.GUISelectChar
  softwaredesign.gui.GUISelectChar$1
-softwaredesign/gui/GUI.java
- softwaredesign.gui.GUI
+softwaredesign/Main.java
+ softwaredesign.Main

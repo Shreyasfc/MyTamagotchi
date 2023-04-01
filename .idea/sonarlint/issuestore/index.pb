@@ -29,8 +29,6 @@ i
 9src/main/java/softwaredesign/gui/ProgressBarObserver.java,0\6\065ea9b99f35ccefe426ba2904d462e1be140d9f
 `
 0src/main/java/softwaredesign/FootballerName.java,2\f\2fd36c7feb287ade440126f04c4c246f480487d5
-c
-3src/main/java/softwaredesign/gui/GUISelectChar.java,6\1\612772cb61303fa22f17fccdcedcb3b08b805cfa
 `
 0src/main/java/softwaredesign/gui/GUIEndGame.java,5\8\58230ef52e114a948f6bc7d87d2ebba57f710408
 e

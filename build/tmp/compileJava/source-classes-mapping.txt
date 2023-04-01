@@ -1,5 +1,5 @@
-softwaredesign/voicehandler/VoiceRecognitionHelper.java
- softwaredesign.voicehandler.VoiceRecognitionHelper
+softwaredesign/gui/ComponentFactory.java
+ softwaredesign.gui.ComponentFactory
 softwaredesign/gui/GuiCloseException.java
  softwaredesign.gui.GuiCloseException
 softwaredesign/FootballerName.java
@@ -16,15 +16,14 @@ softwaredesign/minigame/ballMovement.java
  softwaredesign.minigame.ballMovement
 softwaredesign/gui/GUI.java
  softwaredesign.gui.GUI
-softwaredesign/gui/ModifyStatusCommand.java
- softwaredesign.gui.ModifyStatusCommand
- softwaredesign.gui.ModifyStatusCommand$1
-softwaredesign/gui/ComponentFactory.java
- softwaredesign.gui.ComponentFactory
-softwaredesign/gui/Command.java
- softwaredesign.gui.Command
-softwaredesign/gui/ProgressBarConfig.java
- softwaredesign.gui.ProgressBarConfig
+softwaredesign/gui/DefaultMainMenuComponents.java
+ softwaredesign.gui.DefaultMainMenuComponents
+softwaredesign/gui/DeathController.java
+ softwaredesign.gui.DeathController
+softwaredesign/gui/StatusProgressBarConfigs.java
+ softwaredesign.gui.StatusProgressBarConfigs
+softwaredesign/gui/ObservableProgressBar.java
+ softwaredesign.gui.ObservableProgressBar
 softwaredesign/minigame/MiniGameController.java
  softwaredesign.minigame.MiniGameController
  softwaredesign.minigame.MiniGameController$1
@@ -37,20 +36,23 @@ softwaredesign/minigame/KeyInput.java
  softwaredesign.minigame.KeyInput$KeyLis
 softwaredesign/minigame/GamePanel.java
  softwaredesign.minigame.GamePanel
-softwaredesign/gui/DeathController.java
- softwaredesign.gui.DeathController
-softwaredesign/gui/GUIMainMenu.java
- softwaredesign.gui.GUIMainMenu
-softwaredesign/gui/DefaultMainMenuVisualComponents.java
- softwaredesign.gui.DefaultMainMenuVisualComponents
+softwaredesign/FootballerDisplayer.java
+ softwaredesign.FootballerDisplayer
 softwaredesign/gui/GUISelectChar.java
  softwaredesign.gui.GUISelectChar
  softwaredesign.gui.GUISelectChar$1
-softwaredesign/Main.java
- softwaredesign.Main
 softwaredesign/gui/WarningLabel.java
  softwaredesign.gui.WarningLabel
-softwaredesign/FootballerDisplayer.java
- softwaredesign.FootballerDisplayer
-softwaredesign/gui/ObservableProgressBar.java
- softwaredesign.gui.ObservableProgressBar
+softwaredesign/gui/MiniGameExecuteCommand.java
+ softwaredesign.gui.MiniGameExecuteCommand
+softwaredesign/gui/ModifyStatusCommand.java
+ softwaredesign.gui.ModifyStatusCommand
+ softwaredesign.gui.ModifyStatusCommand$1
+softwaredesign/Main.java
+ softwaredesign.Main
+softwaredesign/gui/Command.java
+ softwaredesign.gui.Command
+softwaredesign/voicehandler/VoiceRecognitionHelper.java
+ softwaredesign.voicehandler.VoiceRecognitionHelper
+softwaredesign/gui/GUIMainMenu.java
+ softwaredesign.gui.GUIMainMenu

@@ -18,7 +18,7 @@ public class ModifyStatusCommand implements Command {
         disableAllButtons(components);
         visuallyUpdateProgressBar(components, progressBarToUpdate, incrementVal, frame);
         JLabel feedingLabel = addLabelWithImageAndReturn(frame, animationImagePath);
-        animateAndReEnableButtons(frame, components, feedingLabel);
+        animateStatusChange(frame, components, feedingLabel);
     }
 
     public ModifyStatusCommand(JFrame frame, String progressBarToUpdate, String animationImagePath, int incrementVal) {
@@ -64,7 +64,7 @@ public class ModifyStatusCommand implements Command {
         return label;
     }
 
-    private static void animateAndReEnableButtons(JFrame frame, Component[] components, JLabel feedingLabel) {
+    private static void animateStatusChange(JFrame frame, Component[] components, JLabel feedingLabel) {
 
         Timer timer = new Timer(50, null);
         timer.addActionListener(new ActionListener() {

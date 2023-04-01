@@ -5,7 +5,7 @@ import java.awt.*;
 
 public interface ComponentFactory {
 
-    JProgressBar createProgressBar(int value, String text, int y, Color fg, Color bg, int criticalValue, boolean isValIncreasing);
-    JButton createButton(String text, int y);
+    JProgressBar createProgressBar(int startVal, String label, int yPos, Color fg, Color bg, int criticalValue, boolean isValIncreasing);
+    JButton createButton(String text, int yPos);
 
 }

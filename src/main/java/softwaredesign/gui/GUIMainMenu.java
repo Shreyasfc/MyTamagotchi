@@ -3,7 +3,6 @@ package softwaredesign.gui;
 import edu.cmu.sphinx.api.Configuration;
 import edu.cmu.sphinx.api.LiveSpeechRecognizer;
 import softwaredesign.FootballerDisplayer;
-import softwaredesign.minigame.MiniGameController;
 import softwaredesign.voicehandler.VoiceRecognitionSingleton;
 
 import javax.swing.*;
@@ -36,7 +35,7 @@ public class GUIMainMenu implements GUI {
     @Override
     public void customizeGUI(JFrame frame) {
 
-        ComponentFactory factory = new DefaultMainMenuVisualComponents();
+        ComponentFactory factory = new DefaultMainMenuComponents();
 
         displayModel(frame);
 
@@ -50,7 +49,7 @@ public class GUIMainMenu implements GUI {
 
         for (StatusProgressBarConfigs config : statusProgressBarsConfigs) {
 
-            ObservableProgressBar progressBar = (ObservableProgressBar) factory.createProgressBar(config.value, config.text, config.y, config.fg, config.bg, config.criticalValue, config.isValIncreasing);
+            ObservableProgressBar progressBar = (ObservableProgressBar) factory.createProgressBar(config.startVal, config.label, config.yPos, config.fg, config.bg, config.criticalValue, config.isValIncreasing);
             frame.add(progressBar);
 
             autoIncrementOrDecrementProgressBar(progressBar);
@@ -58,7 +57,7 @@ public class GUIMainMenu implements GUI {
             DeathController deathController = new DeathController(progressBar.isValIncreasing(), frame, stopSignal);
             progressBar.addObserver(deathController);
 
-            WarningLabel warningLabel = new WarningLabel(config.text, config.criticalValue, config.isValIncreasing, progressBar);
+            WarningLabel warningLabel = new WarningLabel(config.label, config.criticalValue, config.isValIncreasing, progressBar);
             progressBar.addObserver(warningLabel);
             frame.add(warningLabel);
 
@@ -68,13 +67,7 @@ public class GUIMainMenu implements GUI {
         addButton(frame, "Shower", 50, new ModifyStatusCommand(frame, "Hygiene", "src/main/java/softwaredesign/images/waterdroplet.png", 10), factory);
         addButton(frame, "Pee", 90, new ModifyStatusCommand(frame, "Bladder", "src/main/java/softwaredesign/images/toilet.png", -10), factory);
         addButton(frame, "Drink", 130, new ModifyStatusCommand(frame, "Thirst", "src/main/java/softwaredesign/images/bottle.png", -10), factory);
-        addButton(frame, "Minigame", 170, () -> {
-            minigameActive.set(!minigameActive.get());
-            OnGuiClosedCallback miniGameExit = () -> minigameActive.set(!minigameActive.get());
-            MiniGameController miniGameController = new MiniGameController(miniGameExit);
-            miniGameController.initGame();
-            new ModifyStatusCommand(frame, "Mood", "src/main/java/softwaredesign/images/chicken.png", 30).execute();
-        }, factory);
+        addButton(frame, "Minigame", 170, new MiniGameExecuteCommand(minigameActive, new ModifyStatusCommand(frame, "Mood", "src/main/java/softwaredesign/images/chicken.png", 30)), factory);
 
         addVoiceRecognition(frame);
         addVoiceCommandLabels(frame);
@@ -162,7 +155,7 @@ public class GUIMainMenu implements GUI {
             List<String> buttonTexts = getButtonTexts(mainFrame);
             for (String command : buttonTexts) {
                 if (result.toLowerCase().contains(command)) {
-                    SwingUtilities.invokeLater(() -> performButtonClick(mainFrame, command));
+                    SwingUtilities.invokeLater(() -> performButtonClickByVoice(mainFrame, command));
                 }
             }
         }, 0, 500, TimeUnit.MILLISECONDS);

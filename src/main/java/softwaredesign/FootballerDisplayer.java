@@ -51,7 +51,7 @@ public class FootballerDisplayer {
 
     }
 
-    public FootballerName getOneFootballerName(String imagePath) {
+    public FootballerName getFootballerNameByImagePath(String imagePath) {
 
         Optional<FootballerName> optionalFootballerName = FOOTBALLER_MODEL_IMAGE_PATH.entrySet().stream()
                 .filter(entry -> entry.getValue().equals(imagePath))

@@ -3,7 +3,6 @@ package softwaredesign.gui;
 import edu.cmu.sphinx.api.Configuration;
 import edu.cmu.sphinx.api.LiveSpeechRecognizer;
 import softwaredesign.FootballerDisplayer;
-import softwaredesign.voicehandler.VoiceRecognitionSingleton;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,7 +20,7 @@ public class GUIMainMenu implements GUI {
 
     private final AtomicBoolean stopSignal = new AtomicBoolean(false);
 
-    private final AtomicBoolean minigameActive = new AtomicBoolean(false);
+    private final AtomicBoolean pauseAutoUpdateProgressBar = new AtomicBoolean(false);
 
     private final OnGuiClosedCallback onGuiClosedCallback;
 
@@ -67,7 +66,7 @@ public class GUIMainMenu implements GUI {
         addButton(frame, "Shower", 50, new ModifyStatusCommand(frame, "Hygiene", "src/main/java/softwaredesign/images/waterdroplet.png", 10), mainMenuDefaultComponentsProducer);
         addButton(frame, "Pee", 90, new ModifyStatusCommand(frame, "Bladder", "src/main/java/softwaredesign/images/toilet.png", -10), mainMenuDefaultComponentsProducer);
         addButton(frame, "Drink", 130, new ModifyStatusCommand(frame, "Thirst", "src/main/java/softwaredesign/images/bottle.png", -10), mainMenuDefaultComponentsProducer);
-        addButton(frame, "Minigame", 170, new MiniGameExecuteCommand(minigameActive, new ModifyStatusCommand(frame, "Mood", "src/main/java/softwaredesign/images/chicken.png", 30)), mainMenuDefaultComponentsProducer);
+        addButton(frame, "Minigame", 170, new MiniGameExecuteCommand(pauseAutoUpdateProgressBar, new ModifyStatusCommand(frame, "Mood", "src/main/java/softwaredesign/images/chicken.png", 30)), mainMenuDefaultComponentsProducer);
 
         addVoiceRecognition(frame);
         addVoiceCommandLabels(frame);
@@ -98,7 +97,7 @@ public class GUIMainMenu implements GUI {
                 return;
             }
 
-            if (minigameActive.get()) {
+            if (pauseAutoUpdateProgressBar.get()) {
                 return;
             }
 
@@ -137,9 +136,14 @@ public class GUIMainMenu implements GUI {
         configuration.setDictionaryPath("resource:/edu/cmu/sphinx/models/en-us/cmudict-en-us.dict");
         configuration.setLanguageModelPath("resource:/edu/cmu/sphinx/models/en-us/en-us.lm.bin");
 
-        VoiceRecognitionSingleton voiceRecognitionSingleton = VoiceRecognitionSingleton.getInstance(configuration);
-        LiveSpeechRecognizer recognizer = voiceRecognitionSingleton.getRecognizer();
-        recognizer.startRecognition(true);
+        LiveSpeechRecognizer recognizer;
+        try {
+            recognizer = new LiveSpeechRecognizer(configuration);
+            recognizer.startRecognition(true);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
 
         Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(() -> {
             String result = recognizer.getResult().getHypothesis();

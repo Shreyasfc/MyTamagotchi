@@ -46,14 +46,14 @@ public class MiniGameController {
 
 		Players players = new Players();
 		setUpFrame(players);
-		GamePanel game = new GamePanel(players);
-		frame.add(game);
+		GamePanel currentGamePanel = new GamePanel(players);
+		frame.add(currentGamePanel);
 		frame.setVisible(true);
 
 		Timer timer = new Timer(
 				5, e -> {
-					game.move();
-					game.repaint();
+					currentGamePanel.move();
+					currentGamePanel.repaint();
 				}
 		);
 		timer.start();

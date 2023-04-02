@@ -19,15 +19,5 @@ g
 7src/main/java/softwaredesign/minigame/ballMovement.java,9\4\94a0d24bba3e2dcd9d70180cfab8eccdf708eb5b
 _
 /src/main/java/softwaredesign/minigame/Ball.java,9\d\9d9b5157f1c97161e76da4eeaf5ec60e83b7c947
-d
-4src/main/java/softwaredesign/minigame/GamePanel.java,0\a\0ad51166742c52c106ee70fe0df870ed68c4cb50
-c
-3src/main/java/softwaredesign/minigame/KeyInput.java,3\d\3d94567664dc0c9622e257fa0b903b60621a3b0e
-m
-=src/main/java/softwaredesign/minigame/MiniGameController.java,8\6\86da1d1a723cf24d9dbbd8dc5e2adb1de21b1706
 `
 0src/main/java/softwaredesign/FootballerName.java,2\f\2fd36c7feb287ade440126f04c4c246f480487d5
-e
-5src/main/java/softwaredesign/FootballerDisplayer.java,9\2\92d50295af2a6c3d1a18a37354811b92860c51c4
-x
-Hsrc/main/java/softwaredesign/voicehandler/VoiceRecognitionSingleton.java,f\b\fbf9d66bb6676d520afd11081a5a25eba9a88dd3

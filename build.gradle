@@ -2,6 +2,19 @@ plugins {
     id 'java'
 }
 
+jar {
+    // does the manifest thing
+    manifest {
+        attributes(
+                'Main-Class': 'softwaredesign.Main'
+        )
+    }
+    // adds the required lib files
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
 group 'org.example'
 version '1.0-SNAPSHOT'
 

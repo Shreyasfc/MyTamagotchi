@@ -12,8 +12,8 @@ public class FootballerDisplayer {
     private FootballerName chosenFootballer;
 
     private static final Map<FootballerName, String> FOOTBALLER_MODEL_IMAGE_PATH = Map.of(
-            C_RONALDO, "src/main/java/softwaredesign/images/cristianobasic.png",
-            L_MESSI, "src/main/java/softwaredesign/images/messibasic.png"
+            C_RONALDO, "./images/cristianobasic.png",
+            L_MESSI, "./images/messibasic.png"
     );
 
     private static final Map<FootballerName, String> FOOTBALLER_MINI_GAME_IMAGE_PATH = Map.of(

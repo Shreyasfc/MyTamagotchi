@@ -29,7 +29,7 @@ interface GUI {
     }
 
     private void setContentPaneWithImage(JFrame frame)  {
-        Image backgroundImage = new ImageIcon("src/main/java/softwaredesign/images/background.png").getImage();
+        Image backgroundImage = new ImageIcon("./images/background.png").getImage();
         JLabel backgroundLabel = new JLabel(new ImageIcon(backgroundImage));
         backgroundLabel.setBounds(0, 0, backgroundImage.getWidth(null), backgroundImage.getHeight(null));
         frame.setContentPane(backgroundLabel);

@@ -8,7 +8,7 @@ public class Ball extends JPanel {
 
 	private final Random random = new Random();
 	private static final int BALL_SIZE = 90;
-	private final transient Image ballImage = new ImageIcon("./images/soccerballminigame.png").getImage();
+	private final transient Image ballImage = new ImageIcon("src/main/java/softwaredesign/images/soccerballminigame.png").getImage();
 	private int ballX = GamePanel.SCREEN_WIDTH / 2;
 	private int ballY = GamePanel.SCREEN_HEIGHT / 2;
 	private int deltaX = 2;

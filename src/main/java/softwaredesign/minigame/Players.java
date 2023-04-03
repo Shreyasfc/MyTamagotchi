@@ -9,9 +9,9 @@ public class Players extends JPanel{
 	private static final int PLAYER_WIDTH = 100;
 	private static final int PLAYER_HEIGHT = 100;
 
-	private final transient Image backgroundImage = new ImageIcon("./images/fieldminigame.png").getImage();
-	private final transient Image playerOneImage = new ImageIcon("./images/messiminigame.png").getImage();
-	private final transient Image playerTwoImage = new ImageIcon("./images/ronaldominigame.png").getImage();
+	private final transient Image backgroundImage = new ImageIcon("src/main/java/softwaredesign/images/fieldminigame.png").getImage();
+	private final transient Image playerOneImage = new ImageIcon("src/main/java/softwaredesign/images/messiminigame.png").getImage();
+	private final transient Image playerTwoImage = new ImageIcon("src/main/java/softwaredesign/images/ronaldominigame.png").getImage();
 
 	private int playerOneX = 1;
 	private int playerOneY = GamePanel.SCREEN_HEIGHT / 2;

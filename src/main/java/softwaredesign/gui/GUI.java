@@ -5,7 +5,7 @@ import java.awt.*;
 
 interface GUI {
 
-    default void startGUI()  {
+    default void startAndRunGUI()  {
 
         JFrame frame = createWindow();
 
@@ -17,7 +17,9 @@ interface GUI {
 
     }
 
-    void customizeGUI(JFrame frame);
+    default void customizeGUI(JFrame frame) {
+
+    }
 
     private JFrame createWindow() {
         JFrame frame = new JFrame("Tamagotchi");

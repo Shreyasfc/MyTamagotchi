@@ -39,8 +39,6 @@ softwaredesign/gui/GUIEndGame.java
  softwaredesign.gui.GUIEndGame
 softwaredesign/gui/GuiCloseException.java
  softwaredesign.gui.GuiCloseException
-softwaredesign/voicehandler/VoiceRecognitionSingleton.java
- softwaredesign.voicehandler.VoiceRecognitionSingleton
 softwaredesign/gui/ObservableProgressBar.java
  softwaredesign.gui.ObservableProgressBar
 softwaredesign/minigame/KeyInput.java

@@ -3,7 +3,6 @@ package softwaredesign.gui;
 import edu.cmu.sphinx.api.Configuration;
 import edu.cmu.sphinx.api.LiveSpeechRecognizer;
 import softwaredesign.FootballerDisplayer;
-import softwaredesign.voicehandler.VoiceRecognitionSingleton;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,7 +20,7 @@ public class GUIMainMenu implements GUI {
 
     private final AtomicBoolean stopSignal = new AtomicBoolean(false);
 
-    private final AtomicBoolean minigameActive = new AtomicBoolean(false);
+    private final AtomicBoolean pauseAutoUpdateProgressBar = new AtomicBoolean(false);
 
     private final OnGuiClosedCallback onGuiClosedCallback;
 
@@ -40,10 +39,10 @@ public class GUIMainMenu implements GUI {
         displayModel(frame);
 
         StatusProgressBarConfigs[] statusProgressBarsConfigs = {
-                new StatusProgressBarConfigs(50, "Hunger", 10, new Color(128, 0, 0), new Color(255, 182, 193), 90, true),
-                new StatusProgressBarConfigs(50, "Hygiene", 50, new Color(0, 11, 255), new Color(204, 222, 255), 10, false),
-                new StatusProgressBarConfigs(50, "Bladder", 90, new Color(96, 77, 0), new Color(236, 224, 181), 90, true),
-                new StatusProgressBarConfigs(50, "Thirst", 130, new Color(6, 58, 0), new Color(225, 250, 225), 90, true),
+                new StatusProgressBarConfigs(46, "Hunger", 10, new Color(128, 0, 0), new Color(255, 182, 193), 90, true),
+                new StatusProgressBarConfigs(47, "Hygiene", 50, new Color(0, 11, 255), new Color(204, 222, 255), 10, false),
+                new StatusProgressBarConfigs(48, "Bladder", 90, new Color(96, 77, 0), new Color(236, 224, 181), 90, true),
+                new StatusProgressBarConfigs(49, "Thirst", 130, new Color(6, 58, 0), new Color(225, 250, 225), 90, true),
                 new StatusProgressBarConfigs(50, "Mood", 170, new Color(86, 0, 66), new Color(255, 234, 253), 10, false),
         };
 
@@ -63,11 +62,11 @@ public class GUIMainMenu implements GUI {
 
         }
 
-        addButton(frame, "Feed", 10, new ModifyStatusCommand(frame, "Hunger", "src/main/java/softwaredesign/images/chicken.png", -10), mainMenuDefaultComponentsProducer);
-        addButton(frame, "Shower", 50, new ModifyStatusCommand(frame, "Hygiene", "src/main/java/softwaredesign/images/waterdroplet.png", 10), mainMenuDefaultComponentsProducer);
-        addButton(frame, "Pee", 90, new ModifyStatusCommand(frame, "Bladder", "src/main/java/softwaredesign/images/toilet.png", -10), mainMenuDefaultComponentsProducer);
-        addButton(frame, "Drink", 130, new ModifyStatusCommand(frame, "Thirst", "src/main/java/softwaredesign/images/bottle.png", -10), mainMenuDefaultComponentsProducer);
-        addButton(frame, "Minigame", 170, new MiniGameExecuteCommand(minigameActive, new ModifyStatusCommand(frame, "Mood", "src/main/java/softwaredesign/images/chicken.png", 30)), mainMenuDefaultComponentsProducer);
+        addButton(frame, "Feed", 10, new ModifyStatusCommand(frame, "Hunger", "./images/chicken.png", -10), mainMenuDefaultComponentsProducer);
+        addButton(frame, "Shower", 50, new ModifyStatusCommand(frame, "Hygiene", "./images/waterdroplet.png", 10), mainMenuDefaultComponentsProducer);
+        addButton(frame, "Pee", 90, new ModifyStatusCommand(frame, "Bladder", "./images/toilet.png", -10), mainMenuDefaultComponentsProducer);
+        addButton(frame, "Drink", 130, new ModifyStatusCommand(frame, "Thirst", "./images/bottle.png", -10), mainMenuDefaultComponentsProducer);
+        addButton(frame, "Minigame", 170, new MiniGameExecuteCommand(pauseAutoUpdateProgressBar, new ModifyStatusCommand(frame, "Mood", "./images/chicken.png", 30)), mainMenuDefaultComponentsProducer);
 
         addVoiceRecognition(frame);
         addVoiceCommandLabels(frame);
@@ -98,7 +97,7 @@ public class GUIMainMenu implements GUI {
                 return;
             }
 
-            if (minigameActive.get()) {
+            if (pauseAutoUpdateProgressBar.get()) {
                 return;
             }
 
@@ -120,27 +119,39 @@ public class GUIMainMenu implements GUI {
 
     }
 
-    //Note: This is the bonus implementation
-    private void addVoiceRecognition(JFrame mainFrame) {
 
-        // This mini-segment aims to block the annoying logger messages
-        Logger cmRootLogger = Logger.getLogger("default.config");
-        cmRootLogger.setLevel(java.util.logging.Level.OFF);
-        String conFile = System.getProperty("java.util.logging.config.file");
-        if (conFile == null) {
+    private void addVoiceRecognition(JFrame mainFrame) {
+        ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+        executor.schedule(() -> {
+            LiveSpeechRecognizer recognizer = configureRecognizer();
+            if (recognizer != null) {
+                recognizer.startRecognition(true);
+                handleVoiceRecognitionResults(mainFrame, recognizer);
+            }
+        }, 5, TimeUnit.SECONDS);
+    }
+
+    private LiveSpeechRecognizer configureRecognizer() {
+        // Mute logger messages
+        Logger.getLogger("default.config").setLevel(java.util.logging.Level.OFF);
+        if (System.getProperty("java.util.logging.config.file") == null) {
             System.setProperty("java.util.logging.config.file", "ignoreAllSphinx4LoggingOutput");
         }
 
         Configuration configuration = new Configuration();
-
         configuration.setAcousticModelPath("resource:/edu/cmu/sphinx/models/en-us/en-us");
         configuration.setDictionaryPath("resource:/edu/cmu/sphinx/models/en-us/cmudict-en-us.dict");
         configuration.setLanguageModelPath("resource:/edu/cmu/sphinx/models/en-us/en-us.lm.bin");
 
-        VoiceRecognitionSingleton voiceRecognitionSingleton = VoiceRecognitionSingleton.getInstance(configuration);
-        LiveSpeechRecognizer recognizer = voiceRecognitionSingleton.getRecognizer();
-        recognizer.startRecognition(true);
+        try {
+            return new LiveSpeechRecognizer(configuration);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
+    private void handleVoiceRecognitionResults(JFrame mainFrame, LiveSpeechRecognizer recognizer) {
         Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(() -> {
             String result = recognizer.getResult().getHypothesis();
             SwingUtilities.invokeLater(() -> {
@@ -160,6 +171,7 @@ public class GUIMainMenu implements GUI {
             }
         }, 0, 500, TimeUnit.MILLISECONDS);
     }
+
 
     private void addVoiceCommandLabels(JFrame frame) {
 

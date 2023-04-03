@@ -22,13 +22,19 @@ public class GUISelectChar implements GUI {
         this.onGuiClosedCallback = onGuiClosedCallback;
     }
 
-    private int currentImageIndex = 0;
+    private int carouselCurrentImageIndex = 0;
 
     @Override
     public void customizeGUI(JFrame frame) {
 
         addImageCarousel(frame);
         addTextAboveCarousel(frame);
+
+    }
+
+    private String getCurrentCarouselImagePath(){
+
+        return footballerImages[carouselCurrentImageIndex];
 
     }
 
@@ -40,13 +46,13 @@ public class GUISelectChar implements GUI {
 
         JLabel imageLabel = new JLabel();
         imagePanel.add(imageLabel, BorderLayout.CENTER);
-        showSelectableFootballerModel(imageLabel, currentImageIndex);
+        showSelectableFootballerModel(imageLabel, carouselCurrentImageIndex);
 
         imageLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
 
-                footballerDisplayer.setChosenFootballer(footballerDisplayer.getOneFootballerName(footballerImages[currentImageIndex]));
+                footballerDisplayer.setChosenFootballer(footballerDisplayer.getFootballerNameByImagePath(getCurrentCarouselImagePath()));
                 try {
                     onGUIClosure(frame);
                 } catch (IOException ex) {
@@ -69,8 +75,8 @@ public class GUISelectChar implements GUI {
 
         JButton leftButton = new JButton("<");
         leftButton.addActionListener(e -> {
-            currentImageIndex = (currentImageIndex - 1 + footballerImages.length) % footballerImages.length;
-            showSelectableFootballerModel(imageLabel, currentImageIndex);
+            carouselCurrentImageIndex = (carouselCurrentImageIndex - 1 + footballerImages.length) % footballerImages.length;
+            showSelectableFootballerModel(imageLabel, carouselCurrentImageIndex);
         });
         return leftButton;
 
@@ -80,8 +86,8 @@ public class GUISelectChar implements GUI {
 
         JButton rightButton = new JButton(">");
         rightButton.addActionListener(e -> {
-            currentImageIndex = (currentImageIndex + 1) % footballerImages.length;
-            showSelectableFootballerModel(imageLabel, currentImageIndex);
+            carouselCurrentImageIndex = (carouselCurrentImageIndex + 1) % footballerImages.length;
+            showSelectableFootballerModel(imageLabel, carouselCurrentImageIndex);
         });
         return rightButton;
 

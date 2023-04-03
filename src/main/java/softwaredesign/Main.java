@@ -12,12 +12,12 @@ public class Main {
         OnGuiClosedCallback endGameGUIClosed = () -> System.exit(0);
         GUIEndGame onGUIEndGameClosed = new GUIEndGame(endGameGUIClosed);
 
-        OnGuiClosedCallback mainMenuGUIClosed = onGUIEndGameClosed::startGUI;
+        OnGuiClosedCallback mainMenuGUIClosed = onGUIEndGameClosed::startAndRunGUI;
         GUIMainMenu onGUIMainMenuClosed = new GUIMainMenu(mainMenuGUIClosed, footballerDisplayer);
 
-        OnGuiClosedCallback onGUISelectCharClosed = onGUIMainMenuClosed::startGUI;
+        OnGuiClosedCallback onGUISelectCharClosed = onGUIMainMenuClosed::startAndRunGUI;
         GUISelectChar guiSelectChar = new GUISelectChar(footballerDisplayer, onGUISelectCharClosed);
-        guiSelectChar.startGUI();
+        guiSelectChar.startAndRunGUI();
 
     }
 

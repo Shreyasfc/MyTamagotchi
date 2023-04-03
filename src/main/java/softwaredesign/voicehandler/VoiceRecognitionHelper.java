@@ -20,6 +20,7 @@ public class VoiceRecognitionHelper {
         return buttonTexts;
     }
 
+
     public static void performButtonClickByVoice(JFrame frame, String command) {
         for (Component component : frame.getContentPane().getComponents()) {
             if (component instanceof JButton) {
@@ -41,5 +42,7 @@ public class VoiceRecognitionHelper {
 
         return null;
     }
+
+
 
 }

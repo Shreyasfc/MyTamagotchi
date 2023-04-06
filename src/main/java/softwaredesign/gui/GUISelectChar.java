@@ -2,12 +2,10 @@ package softwaredesign.gui;
 
 import softwaredesign.FootballerDisplayer;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.File;
 import java.io.IOException;
 
 public class GUISelectChar implements GUI {
@@ -24,18 +22,23 @@ public class GUISelectChar implements GUI {
         this.onGuiClosedCallback = onGuiClosedCallback;
     }
 
-    private int currentImageIndex = 0;
-
+    private int carouselCurrentImageIndex = 0;
 
     @Override
     public void customizeGUI(JFrame frame) {
 
-        createImageCarousel(frame);
+        addImageCarousel(frame);
         addTextAboveCarousel(frame);
 
     }
 
-    private void createImageCarousel(JFrame frame) {
+    private String getCurrentCarouselImagePath(){
+
+        return footballerImages[carouselCurrentImageIndex];
+
+    }
+
+    private void addImageCarousel(JFrame frame) {
 
         JPanel imagePanel = new JPanel(new BorderLayout());
         imagePanel.setBounds(75, 75, 350, 350);
@@ -43,13 +46,13 @@ public class GUISelectChar implements GUI {
 
         JLabel imageLabel = new JLabel();
         imagePanel.add(imageLabel, BorderLayout.CENTER);
-        setImage(imageLabel, currentImageIndex);
+        showSelectableFootballerModel(imageLabel, carouselCurrentImageIndex);
 
         imageLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
 
-                footballerDisplayer.setChosenFootballer(footballerDisplayer.getOneFootballerName(footballerImages[currentImageIndex]));
+                footballerDisplayer.setChosenFootballer(footballerDisplayer.getFootballerNameByImagePath(getCurrentCarouselImagePath()));
                 try {
                     onGUIClosure(frame);
                 } catch (IOException ex) {
@@ -60,31 +63,31 @@ public class GUISelectChar implements GUI {
 
         });
 
-        JButton leftButton = createLeftButton(imageLabel);
+        JButton leftButton = addLeftButton(imageLabel);
         imagePanel.add(leftButton, BorderLayout.WEST);
 
-        JButton rightButton = createRightButton(imageLabel);
+        JButton rightButton = addRightButton(imageLabel);
         imagePanel.add(rightButton, BorderLayout.EAST);
 
     }
 
-    private JButton createLeftButton(JLabel imageLabel) {
+    private JButton addLeftButton(JLabel imageLabel) {
 
         JButton leftButton = new JButton("<");
         leftButton.addActionListener(e -> {
-            currentImageIndex = (currentImageIndex - 1 + footballerImages.length) % footballerImages.length;
-            setImage(imageLabel, currentImageIndex);
+            carouselCurrentImageIndex = (carouselCurrentImageIndex - 1 + footballerImages.length) % footballerImages.length;
+            showSelectableFootballerModel(imageLabel, carouselCurrentImageIndex);
         });
         return leftButton;
 
     }
 
-    private JButton createRightButton(JLabel imageLabel) {
+    private JButton addRightButton(JLabel imageLabel) {
 
         JButton rightButton = new JButton(">");
         rightButton.addActionListener(e -> {
-            currentImageIndex = (currentImageIndex + 1) % footballerImages.length;
-            setImage(imageLabel, currentImageIndex);
+            carouselCurrentImageIndex = (carouselCurrentImageIndex + 1) % footballerImages.length;
+            showSelectableFootballerModel(imageLabel, carouselCurrentImageIndex);
         });
         return rightButton;
 
@@ -97,14 +100,10 @@ public class GUISelectChar implements GUI {
 
     }
 
-    private void setImage(JLabel imageLabel, int index) {
+    private void showSelectableFootballerModel(JLabel imageLabel, int index) {
 
-        try {
-            Image image = ImageIO.read(new File(footballerImages[index]));
-            imageLabel.setIcon(new ImageIcon(image));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Image image = new ImageIcon(footballerImages[index]).getImage();
+        imageLabel.setIcon(new ImageIcon(image));
 
     }
 

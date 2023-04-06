@@ -1,6 +1,6 @@
 package softwaredesign.gui;
 
-public interface Command {
+interface Command {
 
     void execute();
 

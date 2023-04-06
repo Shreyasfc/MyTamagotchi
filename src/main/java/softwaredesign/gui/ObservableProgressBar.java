@@ -7,11 +7,11 @@ import java.util.List;
 
 public class ObservableProgressBar extends JProgressBar {
     private final List<ProgressBarObserver> observers = new ArrayList<>();
-    private final boolean valIncreasing;
+    private final boolean isValIncreasing;
 
-    public ObservableProgressBar(int min, int max, boolean valIncreasing) {
+    public ObservableProgressBar(int min, int max, boolean isValIncreasing) {
         super(min, max);
-        this.valIncreasing = valIncreasing;
+        this.isValIncreasing = isValIncreasing;
     }
 
     public void addObserver(ProgressBarObserver observer) {
@@ -37,7 +37,7 @@ public class ObservableProgressBar extends JProgressBar {
     }
 
     public boolean isValIncreasing() {
-        return valIncreasing;
+        return isValIncreasing;
     }
 
 }

@@ -1,25 +1,23 @@
 package softwaredesign;
 
 import softwaredesign.gui.GUIEndGame;
-import softwaredesign.gui.GUIMain;
+import softwaredesign.gui.GUIMainMenu;
 import softwaredesign.gui.GUISelectChar;
 import softwaredesign.gui.OnGuiClosedCallback;
-
-import java.io.IOException;
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
         FootballerDisplayer footballerDisplayer = new FootballerDisplayer();
 
         OnGuiClosedCallback endGameGUIClosed = () -> System.exit(0);
-        GUIEndGame guiEndGame = new GUIEndGame(endGameGUIClosed);
+        GUIEndGame onGUIEndGameClosed = new GUIEndGame(endGameGUIClosed);
 
-        OnGuiClosedCallback mainMenuGUIClosed = guiEndGame::startGUI;
-        GUIMain guiMain = new GUIMain(mainMenuGUIClosed, footballerDisplayer);
+        OnGuiClosedCallback mainMenuGUIClosed = onGUIEndGameClosed::startAndRunGUI;
+        GUIMainMenu onGUIMainMenuClosed = new GUIMainMenu(mainMenuGUIClosed, footballerDisplayer);
 
-        OnGuiClosedCallback selectCharGUIClosed = guiMain::startGUI;
-        GUISelectChar guiSelectChar = new GUISelectChar(footballerDisplayer, selectCharGUIClosed);
-        guiSelectChar.startGUI();
+        OnGuiClosedCallback onGUISelectCharClosed = onGUIMainMenuClosed::startAndRunGUI;
+        GUISelectChar guiSelectChar = new GUISelectChar(footballerDisplayer, onGUISelectCharClosed);
+        guiSelectChar.startAndRunGUI();
 
     }
 

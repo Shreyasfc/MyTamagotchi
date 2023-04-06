@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="software-design-vu-2020:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="61095b6c-b5ee-41b2-903e-a4094582981e" name="Changes" comment="Finished linking up GUI to EventManager">
+    <list default="true" id="61095b6c-b5ee-41b2-903e-a4094582981e" name="Changes" comment="Final document uploaded">
       <change beforePath="$PROJECT_DIR$/.gradle/6.8.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.8.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.8.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.8.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.8.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.8.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.8.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/EventManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/GUIMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/GUI/GUIMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/minigame/Ball.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/minigame/Ball.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/minigame/MiniGameMain$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/minigame/MiniGameMain$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/minigame/MiniGameMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/minigame/MiniGameMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/minigame/Players.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/softwaredesign/minigame/Players.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/EventManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/softwaredesign/minigame/Players.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/softwaredesign/minigame/Players.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/SD_ Assignment 2.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/SD_ Assignment(Improved).pdf" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +69,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="GUI" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -97,10 +97,11 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/anass/MainDrive/y2/p4/sd/SD-Team-2/out&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.externalDependencies&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -113,19 +114,6 @@
   <component name="RunManager" selected="Application.Main">
     <configuration name="GUIEndGame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="softwaredesign.gui.GUIEndGame" />
-      <module name="software-design-vu-2020.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="softwaredesign.voicehandler.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GUIMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="softwaredesign.gui.GUIMain" />
       <module name="software-design-vu-2020.main" />
       <extension name="coverage">
         <pattern>
@@ -163,12 +151,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MiniGameMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="softwaredesign.minigame.MiniGameMain" />
+    <configuration name="MiniGameController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="softwaredesign.minigame.MiniGameController" />
       <module name="software-design-vu-2020.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="softwaredesign.minigame.*" />
+          <option name="PATTERN" value="softwaredesign.minigame.MiniGameController" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -176,13 +164,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="software-design-vu-2020.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/out/software-design-vu-2020.jar" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MiniGameMain" />
+        <item itemvalue="JAR Application.software-design-vu-2020.jar" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.MiniGameController" />
         <item itemvalue="Application.GUIEndGame" />
         <item itemvalue="Application.GUISelectChar" />
-        <item itemvalue="Application.GUIMain" />
       </list>
     </recent_temporary>
   </component>
@@ -213,6 +205,9 @@
       <workItem from="1680287028961" duration="14761000" />
       <workItem from="1680301853468" duration="4651000" />
       <workItem from="1680307511205" duration="296000" />
+      <workItem from="1680340334690" duration="2493000" />
+      <workItem from="1680342933995" duration="13087000" />
+      <workItem from="1680357516010" duration="5549000" />
     </task>
     <task id="LOCAL-00001" summary="Basics of Main GUI done">
       <created>1676915085676</created>
@@ -333,7 +328,42 @@
       <option name="project" value="LOCAL" />
       <updated>1680306496169</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Everything linked up">
+      <created>1680343034582</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1680343034582</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Everything linked up">
+      <created>1680348934947</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1680348934947</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Everything linked up">
+      <created>1680357560825</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1680357560825</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Everything linked up">
+      <created>1680364881648</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1680364881648</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Everything linked up">
+      <created>1680365428198</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1680365428198</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -386,6 +416,11 @@
     <MESSAGE value="Slowly decoupling commands" />
     <MESSAGE value="In process of finalizing" />
     <MESSAGE value="Finished linking up GUI to EventManager" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished linking up GUI to EventManager" />
+    <MESSAGE value="Everything linked up" />
+    <option name="LAST_COMMIT_MESSAGE" value="Everything linked up" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

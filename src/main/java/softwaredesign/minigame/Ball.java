@@ -9,7 +9,7 @@ public class Ball extends JPanel {
 	private final Random random = new Random();
 	private static final int BALL_SIZE = 90;
 	private final transient Image ballImage = new ImageIcon("src/main/java/softwaredesign/images/soccerballminigame.png").getImage();
-	private int ballX = GamePanel.SCREE_WIDTH / 2;
+	private int ballX = GamePanel.SCREEN_WIDTH / 2;
 	private int ballY = GamePanel.SCREEN_HEIGHT / 2;
 	private int deltaX = 2;
 	private int deltaY = 2;
@@ -58,15 +58,15 @@ public class Ball extends JPanel {
 
 		if(ballX <= 0 && (ballY >= goalStart || ballY <= goalEnd)){
 			ballX += addOff(ballMovement.RIGHT);
-		}else if(ballX + BALL_SIZE >= GamePanel.SCREE_WIDTH && (ballY >= goalStart || ballY <= goalEnd)){
+		}else if(ballX + BALL_SIZE >= GamePanel.SCREEN_WIDTH && (ballY >= goalStart || ballY <= goalEnd)){
 			ballX += addOff(ballMovement.LEFT);
 		}
 
 		// check goal
-		if(ballX + BALL_SIZE >= GamePanel.SCREE_WIDTH && (ballY <= goalStart && ballY >= goalEnd)) {
+		if(ballX + BALL_SIZE >= GamePanel.SCREEN_WIDTH && (ballY <= goalStart && ballY >= goalEnd)) {
 			playOneScore += 1;
 			ballY = GamePanel.SCREEN_HEIGHT / 2;
-			ballX = GamePanel.SCREE_WIDTH / 2;
+			ballX = GamePanel.SCREEN_WIDTH / 2;
 
 			deltaX = 1;
 			deltaY = 1;
@@ -76,7 +76,7 @@ public class Ball extends JPanel {
 		if(ballX <= 0 && (ballY <= goalStart && ballY >= goalEnd)){
 			playerTwoScore += 1;
 			ballY = (GamePanel.SCREEN_HEIGHT / 2);
-			ballX = (GamePanel.SCREE_WIDTH / 2);
+			ballX = (GamePanel.SCREEN_WIDTH / 2);
 
 			deltaX = -1;
 			deltaY = -1;

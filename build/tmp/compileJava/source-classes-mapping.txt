@@ -1,9 +1,9 @@
 softwaredesign/voicehandler/VoiceRecognitionHelper.java
  softwaredesign.voicehandler.VoiceRecognitionHelper
-softwaredesign/voicehandler/VoiceRecognitionSingleton.java
- softwaredesign.voicehandler.VoiceRecognitionSingleton
-softwaredesign/gui/DefaultMainMenuVisualComponents.java
- softwaredesign.gui.DefaultMainMenuVisualComponents
+softwaredesign/gui/StatusProgressBarConfigs.java
+ softwaredesign.gui.StatusProgressBarConfigs
+softwaredesign/gui/GUIMainMenu.java
+ softwaredesign.gui.GUIMainMenu
 softwaredesign/FootballerName.java
  softwaredesign.FootballerName
 softwaredesign/gui/GUISelectChar.java
@@ -11,46 +11,44 @@ softwaredesign/gui/GUISelectChar.java
  softwaredesign.gui.GUISelectChar$1
 softwaredesign/gui/OnGuiClosedCallback.java
  softwaredesign.gui.OnGuiClosedCallback
+softwaredesign/minigame/MiniGameController.java
+ softwaredesign.minigame.MiniGameController
+ softwaredesign.minigame.MiniGameController$1
 softwaredesign/gui/WarningLabel.java
  softwaredesign.gui.WarningLabel
 softwaredesign/minigame/ballMovement.java
  softwaredesign.minigame.ballMovement
+softwaredesign/gui/MiniGameExecuteCommand.java
+ softwaredesign.gui.MiniGameExecuteCommand
 softwaredesign/gui/DeathController.java
  softwaredesign.gui.DeathController
 softwaredesign/gui/ModifyStatusCommand.java
  softwaredesign.gui.ModifyStatusCommand
  softwaredesign.gui.ModifyStatusCommand$1
-softwaredesign/gui/ObservableProgressBar.java
- softwaredesign.gui.ObservableProgressBar
-softwaredesign/gui/Command.java
- softwaredesign.gui.Command
-softwaredesign/gui/ProgressBarConfig.java
- softwaredesign.gui.ProgressBarConfig
-softwaredesign/gui/GUI.java
- softwaredesign.gui.GUI
-softwaredesign/gui/ProgressBarObserver.java
- softwaredesign.gui.ProgressBarObserver
-softwaredesign/FootballerDisplayer.java
- softwaredesign.FootballerDisplayer
-softwaredesign/gui/ComponentFactory.java
- softwaredesign.gui.ComponentFactory
-softwaredesign/gui/GUIEndGame.java
- softwaredesign.gui.GUIEndGame
-softwaredesign/gui/GuiCloseException.java
- softwaredesign.gui.GuiCloseException
 softwaredesign/minigame/Players.java
  softwaredesign.minigame.Players
-softwaredesign/minigame/KeyInput.java
- softwaredesign.minigame.KeyInput
- softwaredesign.minigame.KeyInput$KeyLis
 softwaredesign/minigame/GamePanel.java
  softwaredesign.minigame.GamePanel
 softwaredesign/Main.java
  softwaredesign.Main
-softwaredesign/minigame/MiniGameMain.java
- softwaredesign.minigame.MiniGameMain
- softwaredesign.minigame.MiniGameMain$1
-softwaredesign/gui/GUIMain.java
- softwaredesign.gui.GUIMain
+softwaredesign/gui/GUI.java
+ softwaredesign.gui.GUI
+softwaredesign/FootballerDisplayer.java
+ softwaredesign.FootballerDisplayer
+softwaredesign/gui/GUIEndGame.java
+ softwaredesign.gui.GUIEndGame
+softwaredesign/gui/GuiCloseException.java
+ softwaredesign.gui.GuiCloseException
+softwaredesign/gui/ObservableProgressBar.java
+ softwaredesign.gui.ObservableProgressBar
+softwaredesign/minigame/KeyInput.java
+ softwaredesign.minigame.KeyInput
+ softwaredesign.minigame.KeyInput$KeyLis
+softwaredesign/gui/Command.java
+ softwaredesign.gui.Command
+softwaredesign/gui/ProgressBarObserver.java
+ softwaredesign.gui.ProgressBarObserver
+softwaredesign/gui/MainMenuDefaultComponentsProducer.java
+ softwaredesign.gui.MainMenuDefaultComponentsProducer
 softwaredesign/minigame/Ball.java
  softwaredesign.minigame.Ball

@@ -7,7 +7,8 @@ import java.util.List;
 
 public class VoiceRecognitionHelper {
 
-    private VoiceRecognitionHelper(){};
+    private VoiceRecognitionHelper(){}
+
     public static List<String> getButtonTexts(JFrame frame) {
         List<String> buttonTexts = new ArrayList<>();
         for (Component component : frame.getContentPane().getComponents()) {
@@ -19,7 +20,8 @@ public class VoiceRecognitionHelper {
         return buttonTexts;
     }
 
-    public static void performButtonClick(JFrame frame, String command) {
+
+    public static void performButtonClickByVoice(JFrame frame, String command) {
         for (Component component : frame.getContentPane().getComponents()) {
             if (component instanceof JButton) {
                 JButton button = (JButton) component;
@@ -40,5 +42,7 @@ public class VoiceRecognitionHelper {
 
         return null;
     }
+
+
 
 }
